@@ -1,26 +1,235 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ============================================================
+   THE ESSUMAN'S — Design Foundation
+   ============================================================ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ivory:         #FAF8F5;
+  --color-charcoal:      #1E1E1E;
+  --color-champagne:     #C9A96E;
+  --color-champagne-lt:  #E8D5B0;
+  --color-stone:         #EDE7DC;
+  --color-warm-white:    #FFFEF9;
+  --color-muted:         #6B6560;
+  --color-muted-lt:      #9A948F;
+  --color-border:        #DDD8D0;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans:  var(--font-jost), "Jost", system-ui, sans-serif;
+  --font-script: var(--font-script), "Great Vibes", cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   Base Reset
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FAF8F5;
+  color: #1E1E1E;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, video { display: block; max-width: 100%; }
+
+p { text-wrap: pretty; }
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #1E1E1E;
+}
+
+/* ============================================================
+   Container — The core layout system
+   All normal content must use this container.
+   Full-bleed backgrounds/photographs are exempt.
+   ============================================================ */
+
+.container-e {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+@media (min-width: 540px)  { .container-e { padding-inline: 32px; } }
+@media (min-width: 768px)  { .container-e { padding-inline: 40px; } }
+@media (min-width: 1024px) { .container-e { padding-inline: 56px; } }
+@media (min-width: 1280px) { .container-e { padding-inline: 72px; } }
+@media (min-width: 1536px) { .container-e { padding-inline: 80px; } }
+
+/* Narrow reading container — body text, quotes, memories */
+.container-narrow {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+@media (min-width: 540px)  { .container-narrow { padding-inline: 32px; } }
+@media (min-width: 768px)  { .container-narrow { padding-inline: 0; } }
+
+/* ============================================================
+   Section Spacing
+   ============================================================ */
+
+.section-pad {
+  padding-block: 80px;
+}
+
+@media (min-width: 768px)  { .section-pad { padding-block: 104px; } }
+@media (min-width: 1024px) { .section-pad { padding-block: 128px; } }
+
+.section-pad-sm {
+  padding-block: 64px;
+}
+
+@media (min-width: 768px)  { .section-pad-sm { padding-block: 88px; } }
+@media (min-width: 1024px) { .section-pad-sm { padding-block: 104px; } }
+
+/* ============================================================
+   Typography Scale
+   ============================================================ */
+
+/* Hero headline — responsive clamp */
+.text-hero {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 9vw, 5.5rem);  /* 44px → 88px */
+  letter-spacing: 0.22em;
+  line-height: 1.05;
+}
+
+/* Section headings */
+.text-section-heading {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.125rem, 5vw, 4rem);   /* 34px → 64px */
+  line-height: 1.1;
+}
+
+/* Large serif sub-headings */
+.text-serif-lg {
+  font-family: var(--font-serif);
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem); /* 22px → 30px */
+  line-height: 1.3;
+}
+
+/* Body readable */
+.text-body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(1rem, 1.2vw, 1.125rem);   /* 16px → 18px */
+  line-height: 1.75;
+}
+
+/* Script accent */
+.text-script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Nav label */
+.text-nav {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.8125rem;      /* 13px */
+  letter-spacing: 0.1em;
+}
+
+/* Small caps / eyebrow label */
+.text-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.6875rem;      /* 11px */
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Focus states — Accessible & on-brand
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid #C9A96E;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   Selections
+   ============================================================ */
+
+::selection {
+  background-color: #C9A96E;
+  color: #FAF8F5;
+}
+
+/* ============================================================
+   Scrollbar
+   ============================================================ */
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #FAF8F5; }
+::-webkit-scrollbar-thumb { background: #DDD8D0; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #C9A96E; }
+
+/* ============================================================
+   Hero overlay
+   ============================================================ */
+
+.hero-overlay {
+  background: linear-gradient(
+    160deg,
+    rgba(0,0,0,0.12) 0%,
+    rgba(0,0,0,0.50) 60%,
+    rgba(0,0,0,0.65) 100%
+  );
+}
+
+/* ============================================================
+   Champagne accent mark
+   ============================================================ */
+
+.accent-line {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: #C9A96E;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Body-lock when overlays open
+   ============================================================ */
+
+body.overlay-open { overflow: hidden; }
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
