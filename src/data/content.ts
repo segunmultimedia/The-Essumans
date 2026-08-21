@@ -25,7 +25,7 @@ export const heroContent = {
   primaryCTA:  "Explore Our Story",
   secondaryCTA:"Leave a Wish",
   // [REPLACE] — Real hero photograph of the couple
-  heroImage:   "https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=90&auto=format&fit=crop",
+  heroImage:   "/header.jpg",
   heroImageAlt:"Kwabena and Kristine — their wedding day",
 };
 
@@ -35,7 +35,7 @@ export const coupleIntroduction = {
   // [REPLACE] — Replace with real introduction
   body: "Two people. One beautiful beginning. Their story is one of love, patience, and perfect timing — the kind of love that quietly changes everything. Together, they begin a new chapter as the Essuman family.",
   // [REPLACE] — Real couple portrait
-  image:    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000&q=85&auto=format&fit=crop",
+  image:    "/essumans.jpg",
   imageAlt: "Kwabena and Kristine together",
 };
 
@@ -54,7 +54,7 @@ export const storyMilestones = [
     heading:     "The Journey",
     year:        "2020 – 2024",    // [REPLACE]
     description: "Through seasons of growth and change, their bond deepened. They built something worth holding on to — not just love, but understanding, trust, and a future worth believing in.",
-    image:       "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&q=80&auto=format&fit=crop",
+    image:       "/the-two.jpg",
     imageAlt:    "Their journey together",
   },
   {
@@ -62,7 +62,7 @@ export const storyMilestones = [
     heading:     "The Proposal",
     year:        "2025",           // [REPLACE]
     description: "He asked. She said yes. And in that one moment, everything that had been quietly building finally had a name: forever.",
-    image:       "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=900&q=80&auto=format&fit=crop",
+    image:       "/love.png",
     imageAlt:    "The proposal",
   },
   {

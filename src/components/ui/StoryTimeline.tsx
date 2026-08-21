@@ -77,7 +77,7 @@ export default function StoryTimeline() {
                     alt={milestone.imageAlt}
                     fill
                     sizes="(max-width: 768px) 90vw, 45vw"
-                    className="object-cover transition-transform duration-[1.5s] hover:scale-[1.03]"
+                    className={`object-cover ${milestone.id === 'the-journey' ? 'object-[center_25%]' : 'object-center'} transition-transform duration-[1.5s] hover:scale-[1.03]`}
                     quality={80}
                     loading={i < 2 ? "eager" : "lazy"}
                   />

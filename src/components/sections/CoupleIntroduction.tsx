@@ -33,15 +33,33 @@ export default function CoupleIntroduction() {
             variants={revealVariants}
             className="relative w-full max-w-[480px] mx-auto lg:max-w-none"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden">
-              <Image
-                src={coupleIntroduction.image}
-                alt={coupleIntroduction.imageAlt}
-                fill
-                sizes="(max-width: 1024px) 90vw, 45vw"
-                className="object-cover object-top transition-transform duration-[1.5s] hover:scale-[1.03]"
-                quality={85}
-              />
+            <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#FAF8F5]">
+              <motion.div
+                animate={
+                  reduce
+                    ? { opacity: 1, scale: 1 }
+                    : {
+                        scale: [1, 1.015, 1.135, 1.15],
+                        opacity: [0, 1, 1, 0],
+                      }
+                }
+                transition={{
+                  duration: 15,
+                  repeat: Infinity,
+                  ease: "linear",
+                  times: [0, 0.1, 0.9, 1],
+                }}
+                className="absolute inset-0 w-full h-full"
+              >
+                <Image
+                  src={coupleIntroduction.image}
+                  alt={coupleIntroduction.imageAlt}
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 45vw"
+                  className="object-cover object-center"
+                  quality={85}
+                />
+              </motion.div>
             </div>
             {/* Champagne bottom accent */}
             <span
