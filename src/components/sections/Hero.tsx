@@ -42,7 +42,7 @@ export default function Hero() {
       <div className="absolute inset-0 hero-overlay" aria-hidden="true" />
 
       {/* Content — vertically centered, not crammed */}
-      <div className="relative z-10 container-e flex flex-col items-center text-center">
+      <div className="relative z-10 container-e flex flex-col items-center text-center -mt-32 md:-mt-40">
 
         {/* Brand mark — dominant */}
         <motion.h1
