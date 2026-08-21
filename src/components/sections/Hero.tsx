@@ -62,8 +62,8 @@ export default function Hero() {
         {/* Couple names */}
         <motion.p
           {...fade(0.6)}
-          className="text-script text-white/95"
-          style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)" }}
+          className="text-script text-white/95 whitespace-nowrap"
+          style={{ fontSize: "clamp(2.25rem, 8.5vw, 4.5rem)" }}
         >
           {heroContent.coupleNames}
         </motion.p>
@@ -71,7 +71,7 @@ export default function Hero() {
         {/* Wedding date */}
         <motion.p
           {...fade(0.72)}
-          className="text-eyebrow text-white/65 -mt-2"
+          className="text-eyebrow text-white/65 mt-1"
         >
           {heroContent.date}
         </motion.p>
