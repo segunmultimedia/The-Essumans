@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ModerationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Wish {
+  id           String           @id @default(cuid())
+  name         String
+  relationship String?
+  message      String
+  photoUrl     String?
+  status       ModerationStatus @default(PENDING)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  approvedAt   DateTime?
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([status, createdAt])
+}
+
+model KwabenaQuote {
+  id          String           @id @default(cuid())
+  submittedBy String
+  quote       String
+  context     String?
+  status      ModerationStatus @default(PENDING)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  approvedAt  DateTime?
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([status, createdAt])
+}
+
+model Memory {
+  id           String           @id @default(cuid())
+  name         String
+  relationship String?
+  memory       String
+  photoUrl     String?
+  status       ModerationStatus @default(PENDING)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  approvedAt  DateTime?
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([status, createdAt])
+}
