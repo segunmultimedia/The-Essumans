@@ -71,37 +71,28 @@ export default function Hero() {
         {/* Wedding date */}
         <motion.p
           {...fade(0.72)}
-          className="text-eyebrow text-white/65 mt-3 mb-8"
+          className="text-eyebrow text-white/65 -mt-2"
         >
           {heroContent.date}
         </motion.p>
-
-        {/* Tagline */}
-        <motion.p
-          {...fade(0.84)}
-          className="font-serif italic text-white/75 mb-12 max-w-md"
-          style={{ fontSize: "clamp(1.0625rem, 1.8vw, 1.25rem)" }}
-        >
-          &ldquo;{heroContent.tagline}&rdquo;
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          {...fade(0.98)}
-          className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto"
-        >
-          <a href="#our-story" className="w-full sm:w-auto">
-            <Button variant="primary" fullWidth>
-              {heroContent.primaryCTA}
-            </Button>
-          </a>
-          <a href="#wishes" className="w-full sm:w-auto">
-            <Button variant="ghost-light" fullWidth>
-              {heroContent.secondaryCTA}
-            </Button>
-          </a>
-        </motion.div>
       </div>
+
+      {/* CTAs - Anchored to bottom */}
+      <motion.div
+        {...fade(0.98)}
+        className="absolute z-10 bottom-10 md:bottom-16 left-0 right-0 px-5 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full"
+      >
+        <a href="#wishes" className="w-full sm:w-max min-w-[200px]">
+          <Button variant="primary" fullWidth>
+            {heroContent.secondaryCTA}
+          </Button>
+        </a>
+        <a href="#our-story" className="w-full sm:w-max min-w-[200px]">
+          <Button variant="ghost-light" fullWidth>
+            {heroContent.primaryCTA}
+          </Button>
+        </a>
+      </motion.div>
     </section>
   );
 }
