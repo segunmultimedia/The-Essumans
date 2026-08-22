@@ -5,10 +5,10 @@ import { sampleWishes } from "@/data/content";
 import WishCard from "@/components/ui/WishCard";
 import Button from "@/components/ui/Button";
 import { motion, useReducedMotion } from "framer-motion";
-import { ComingSoonFeedback } from "@/components/ui/ComingSoonFeedback";
+import WishFormModal from "@/components/ui/WishFormModal";
 
 export default function WishesPreview() {
-  const [showFeedback, setShowFeedback] = useState(false);
+  const [isWishModalOpen, setIsWishModalOpen] = useState(false);
   const reduce = useReducedMotion();
 
   const containerVariants = {
@@ -25,8 +25,7 @@ export default function WishesPreview() {
   };
 
   const handleWishClick = () => {
-    setShowFeedback(true);
-    setTimeout(() => setShowFeedback(false), 4000);
+    setIsWishModalOpen(true);
   };
 
   return (
@@ -72,12 +71,13 @@ export default function WishesPreview() {
           <Button variant="secondary" onClick={handleWishClick}>
             Leave Your Wish
           </Button>
-          <ComingSoonFeedback
-            show={showFeedback}
-            message="Wish submissions will open soon — we can't wait to hear from you."
-          />
         </div>
       </div>
+
+      <WishFormModal 
+        isOpen={isWishModalOpen} 
+        onClose={() => setIsWishModalOpen(false)} 
+      />
     </section>
   );
 }

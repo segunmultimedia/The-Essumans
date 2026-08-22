@@ -3,14 +3,14 @@
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 import { ComingSoonFeedback } from "@/components/ui/ComingSoonFeedback";
+import WishFormModal from "@/components/ui/WishFormModal";
 
 export default function FinalCTA() {
-  const [wishFeedback,   setWishFeedback]   = useState(false);
+  const [isWishModalOpen, setIsWishModalOpen] = useState(false);
   const [memoryFeedback, setMemoryFeedback] = useState(false);
 
   const handleWish = () => {
-    setWishFeedback(true);
-    setTimeout(() => setWishFeedback(false), 4000);
+    setIsWishModalOpen(true);
   };
 
   const handleMemory = () => {
@@ -48,17 +48,17 @@ export default function FinalCTA() {
             </Button>
           </div>
 
-          {/* Feedback messages */}
-          <ComingSoonFeedback
-            show={wishFeedback}
-            message="Wish submissions will open soon — we look forward to reading yours."
-          />
           <ComingSoonFeedback
             show={memoryFeedback}
             message="Memory sharing will open soon — your story matters to them."
           />
         </div>
       </div>
+      
+      <WishFormModal 
+        isOpen={isWishModalOpen} 
+        onClose={() => setIsWishModalOpen(false)} 
+      />
     </section>
   );
 }
