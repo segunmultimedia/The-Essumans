@@ -33,7 +33,7 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center md:object-[center_30%] lg:object-[center_35%]"
+          className="object-cover object-center md:object-top lg:object-top"
           quality={90}
         />
       </motion.div>
