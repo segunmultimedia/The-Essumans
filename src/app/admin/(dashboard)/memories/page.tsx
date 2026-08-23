@@ -87,6 +87,7 @@ export default async function MemoriesManagementPage(props: { searchParams: Prom
                   
                   <div className="shrink-0 flex flex-col justify-start">
                     <ModerationButtons 
+                      type="Memory"
                       id={memory.id} 
                       status={memory.status}
                       onApprove={approveMemory}

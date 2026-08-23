@@ -80,6 +80,7 @@ export default async function WishesManagementPage(props: { searchParams: Promis
                   
                   <div className="shrink-0 pt-2 md:pt-0">
                     <ModerationButtons 
+                      type="Wish"
                       id={wish.id} 
                       status={wish.status}
                       onApprove={approveWish}
