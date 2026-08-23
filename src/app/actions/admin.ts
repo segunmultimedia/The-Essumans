@@ -1,0 +1,92 @@
+"use server";
+
+import { requireAdmin } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
+import { supabase } from "@/lib/supabase";
+
+// WISH ACTIONS
+
+export async function approveWish(id: string) {
+  await requireAdmin();
+  await prisma.wish.update({
+    where: { id },
+    data: { status: "APPROVED", approvedAt: new Date() },
+  });
+  revalidatePath("/admin/wishes");
+  revalidatePath("/");
+}
+
+export async function rejectWish(id: string) {
+  await requireAdmin();
+  await prisma.wish.update({
+    where: { id },
+    data: { status: "REJECTED" },
+  });
+  revalidatePath("/admin/wishes");
+  revalidatePath("/");
+}
+
+export async function deleteWish(id: string) {
+  await requireAdmin();
+  await prisma.wish.delete({
+    where: { id },
+  });
+  revalidatePath("/admin/wishes");
+  revalidatePath("/");
+}
+
+
+// MEMORY ACTIONS
+
+export async function approveMemory(id: string) {
+  await requireAdmin();
+  await prisma.memory.update({
+    where: { id },
+    data: { status: "APPROVED", approvedAt: new Date() },
+  });
+  revalidatePath("/admin/memories");
+  revalidatePath("/");
+}
+
+export async function rejectMemory(id: string) {
+  await requireAdmin();
+  await prisma.memory.update({
+    where: { id },
+    data: { status: "REJECTED" },
+  });
+  revalidatePath("/admin/memories");
+  revalidatePath("/");
+}
+
+export async function deleteMemory(id: string) {
+  await requireAdmin();
+  
+  // Fetch memory first to see if it has a photo
+  const memory = await prisma.memory.findUnique({
+    where: { id },
+    select: { photoUrl: true }
+  });
+
+  if (memory?.photoUrl) {
+    // Extract filename from URL (assuming standard Supabase storage URL format)
+    const urlParts = memory.photoUrl.split('/');
+    const filename = urlParts[urlParts.length - 1];
+    
+    if (filename) {
+      const { error } = await supabase.storage.from("memories").remove([filename]);
+      if (error) {
+        console.error("Failed to delete image from Supabase:", error);
+        // Continue to delete DB record even if image deletion fails, 
+        // to avoid being stuck in a broken state, or throw if strictness is required.
+      }
+    }
+  }
+
+  await prisma.memory.delete({
+    where: { id },
+  });
+  
+  revalidatePath("/admin/memories");
+  revalidatePath("/");
+}
