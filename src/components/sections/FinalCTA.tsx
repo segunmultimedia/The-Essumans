@@ -2,20 +2,19 @@
 
 import { useState } from "react";
 import Button from "@/components/ui/Button";
-import { ComingSoonFeedback } from "@/components/ui/ComingSoonFeedback";
 import WishFormModal from "@/components/ui/WishFormModal";
+import MemoryFormModal from "@/components/ui/MemoryFormModal";
 
 export default function FinalCTA() {
   const [isWishModalOpen, setIsWishModalOpen] = useState(false);
-  const [memoryFeedback, setMemoryFeedback] = useState(false);
+  const [isMemoryModalOpen, setIsMemoryModalOpen] = useState(false);
 
   const handleWish = () => {
     setIsWishModalOpen(true);
   };
 
   const handleMemory = () => {
-    setMemoryFeedback(true);
-    setTimeout(() => setMemoryFeedback(false), 4000);
+    setIsMemoryModalOpen(true);
   };
 
   return (
@@ -47,17 +46,17 @@ export default function FinalCTA() {
               Share a Memory
             </Button>
           </div>
-
-          <ComingSoonFeedback
-            show={memoryFeedback}
-            message="Memory sharing will open soon — your story matters to them."
-          />
         </div>
       </div>
       
       <WishFormModal 
         isOpen={isWishModalOpen} 
         onClose={() => setIsWishModalOpen(false)} 
+      />
+
+      <MemoryFormModal 
+        isOpen={isMemoryModalOpen} 
+        onClose={() => setIsMemoryModalOpen(false)} 
       />
     </section>
   );

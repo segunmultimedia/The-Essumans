@@ -1,38 +1,72 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { sampleWishes } from "@/data/content";
 import WishCard from "@/components/ui/WishCard";
 import Button from "@/components/ui/Button";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import WishFormModal from "@/components/ui/WishFormModal";
 
 export default function WishesPreview() {
   const [isWishModalOpen, setIsWishModalOpen] = useState(false);
+  const [page, setPage] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(1);
+  const [isClient, setIsClient] = useState(false);
+  
   const reduce = useReducedMotion();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 }
-    }
-  };
+  // Handle responsive count and client hydration
+  useEffect(() => {
+    setIsClient(true);
+    const updateCount = () => {
+      if (window.innerWidth >= 1280) setVisibleCount(3);
+      else if (window.innerWidth >= 768) setVisibleCount(2);
+      else setVisibleCount(1);
+    };
+    updateCount();
+    window.addEventListener("resize", updateCount);
+    return () => window.removeEventListener("resize", updateCount);
+  }, []);
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: reduce ? 0 : 25 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
-  };
+  // Auto-play logic with dynamic timing based on message length
+  useEffect(() => {
+    if (isHovered || sampleWishes.length === 0) return;
+
+    // Use the primary visible card to determine reading time
+    const primaryWish = sampleWishes[page % sampleWishes.length];
+    const charLength = primaryWish?.message?.length || 0;
+    
+    // ~20 chars per second reading speed. Minimum 9 seconds, Maximum 15 seconds.
+    let durationMs = Math.max(9000, (charLength / 20) * 1000);
+    durationMs = Math.min(durationMs, 15000);
+
+    const timer = setTimeout(() => {
+      setPage((p) => p + 1);
+    }, durationMs);
+
+    return () => clearTimeout(timer);
+  }, [page, isHovered]);
 
   const handleWishClick = () => {
     setIsWishModalOpen(true);
   };
 
+  // Safe subset for rendering (avoid hydration mismatch by defaulting to 1 on server)
+  const renderCount = isClient ? visibleCount : 1;
+  const wishesToRender = Array.from({ length: renderCount }).map((_, i) => {
+    const renderIndex = page + i;
+    return {
+      wish: sampleWishes[renderIndex % sampleWishes.length],
+      renderIndex,
+    };
+  });
+
   return (
     <section
       id="wishes"
       aria-label="Words from the heart — guest wishes"
-      className="w-full bg-[#FFFEF9] section-pad"
+      className="w-full bg-[#FFFEF9] section-pad overflow-hidden"
     >
       <div className="container-e">
         {/* Heading */}
@@ -46,28 +80,43 @@ export default function WishesPreview() {
           </p>
         </div>
 
-        {/* Cards — 1 col → 2 col tablet → 3 col desktop with stagger reveal */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 items-stretch"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
+        {/* Infinite Carousel */}
+        <div 
+          className="relative w-full"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
+          onTouchCancel={() => setIsHovered(false)}
         >
-          {sampleWishes.map((wish) => (
-            <motion.div key={wish.id} variants={cardVariants} className="h-full">
-              <WishCard
-                guestName={wish.guestName}
-                message={wish.message}
-                relationship={wish.relationship}
-                avatar={wish.avatar}
-              />
+          {sampleWishes.length > 0 && (
+            <motion.div layout className="flex gap-6 md:gap-8 items-stretch relative min-h-[300px] pb-4">
+              <AnimatePresence mode="popLayout" initial={false}>
+                {wishesToRender.map(({ wish, renderIndex }) => (
+                  <motion.div
+                    key={renderIndex}
+                    layout
+                    initial={{ opacity: 0, x: reduce ? 0 : 60 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: reduce ? 0 : -60 }}
+                    transition={{ duration: 1.8, ease: "easeInOut" }}
+                    className="w-full md:w-[calc(50%-16px)] xl:w-[calc(33.333%-21.33px)] shrink-0 flex flex-col"
+                  >
+                    <WishCard
+                      guestName={wish.guestName}
+                      message={wish.message}
+                      relationship={wish.relationship}
+                      avatar={wish.avatar}
+                    />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </motion.div>
-          ))}
-        </motion.div>
+          )}
+        </div>
 
         {/* CTA */}
-        <div className="mt-12 md:mt-16 flex flex-col items-center">
+        <div className="mt-8 md:mt-12 flex flex-col items-center relative z-10">
           <Button variant="secondary" onClick={handleWishClick}>
             Leave Your Wish
           </Button>
