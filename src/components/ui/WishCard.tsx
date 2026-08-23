@@ -1,7 +1,7 @@
 interface WishCardProps {
   guestName:    string;
   message:      string;
-  relationship: string;
+  relationship: string | null;
   avatar:       string | null;
 }
 

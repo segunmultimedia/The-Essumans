@@ -10,8 +10,22 @@ import Memories from "@/components/sections/Memories";
 import FinalCTA from "@/components/sections/FinalCTA";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import AudioPlayer from "@/components/ui/AudioPlayer";
+import { prisma } from "@/lib/prisma";
 
-export default function Home() {
+export const revalidate = 60; // Safe caching boundary (1 min), plus on-demand revalidation
+
+export default async function Home() {
+  // Fetch only APPROVED content from the database
+  const approvedWishes = await prisma.wish.findMany({
+    where: { status: "APPROVED" },
+    orderBy: { approvedAt: "desc" }
+  });
+
+  const approvedMemories = await prisma.memory.findMany({
+    where: { status: "APPROVED" },
+    orderBy: { approvedAt: "desc" }
+  });
+
   return (
     <>
       <Header />
@@ -20,9 +34,9 @@ export default function Home() {
         <CoupleIntroduction />
         <OurStory />
         <Gallery />
-        <WishesPreview />
+        <WishesPreview wishes={approvedWishes} />
         <KwabenaOnceSaid />
-        <Memories />
+        <Memories memories={approvedMemories} />
         <FinalCTA />
       </main>
       <Footer />

@@ -1,13 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { sampleWishes } from "@/data/content";
 import WishCard from "@/components/ui/WishCard";
 import Button from "@/components/ui/Button";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import WishFormModal from "@/components/ui/WishFormModal";
 
-export default function WishesPreview() {
+interface DbWish {
+  id: string;
+  name: string;
+  message: string;
+  relationship: string | null;
+}
+
+interface WishesPreviewProps {
+  wishes: DbWish[];
+}
+
+export default function WishesPreview({ wishes }: WishesPreviewProps) {
   const [isWishModalOpen, setIsWishModalOpen] = useState(false);
   const [page, setPage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -31,10 +41,10 @@ export default function WishesPreview() {
 
   // Auto-play logic with dynamic timing based on message length
   useEffect(() => {
-    if (isHovered || sampleWishes.length === 0) return;
+    if (isHovered || wishes.length === 0) return;
 
     // Use the primary visible card to determine reading time
-    const primaryWish = sampleWishes[page % sampleWishes.length];
+    const primaryWish = wishes[page % wishes.length];
     const charLength = primaryWish?.message?.length || 0;
     
     // ~20 chars per second reading speed. Minimum 9 seconds, Maximum 15 seconds.
@@ -46,7 +56,7 @@ export default function WishesPreview() {
     }, durationMs);
 
     return () => clearTimeout(timer);
-  }, [page, isHovered]);
+  }, [page, isHovered, wishes]);
 
   const handleWishClick = () => {
     setIsWishModalOpen(true);
@@ -54,13 +64,13 @@ export default function WishesPreview() {
 
   // Safe subset for rendering (avoid hydration mismatch by defaulting to 1 on server)
   const renderCount = isClient ? visibleCount : 1;
-  const wishesToRender = Array.from({ length: renderCount }).map((_, i) => {
+  const wishesToRender = wishes.length > 0 ? Array.from({ length: renderCount }).map((_, i) => {
     const renderIndex = page + i;
     return {
-      wish: sampleWishes[renderIndex % sampleWishes.length],
+      wish: wishes[renderIndex % wishes.length],
       renderIndex,
     };
-  });
+  }) : [];
 
   return (
     <section
@@ -80,7 +90,7 @@ export default function WishesPreview() {
           </p>
         </div>
 
-        {/* Infinite Carousel */}
+        {/* Infinite Carousel or Empty State */}
         <div 
           className="relative w-full"
           onMouseEnter={() => setIsHovered(true)}
@@ -89,7 +99,7 @@ export default function WishesPreview() {
           onTouchEnd={() => setIsHovered(false)}
           onTouchCancel={() => setIsHovered(false)}
         >
-          {sampleWishes.length > 0 && (
+          {wishes.length > 0 ? (
             <motion.div layout className="flex gap-6 md:gap-8 items-stretch relative min-h-[300px] pb-4">
               <AnimatePresence mode="popLayout" initial={false}>
                 {wishesToRender.map(({ wish, renderIndex }) => (
@@ -103,15 +113,21 @@ export default function WishesPreview() {
                     className="w-full md:w-[calc(50%-16px)] xl:w-[calc(33.333%-21.33px)] shrink-0 flex flex-col"
                   >
                     <WishCard
-                      guestName={wish.guestName}
+                      guestName={wish.name}
                       message={wish.message}
                       relationship={wish.relationship}
-                      avatar={wish.avatar}
+                      avatar={null} // Real data doesn't have avatars, fallback to default initials
                     />
                   </motion.div>
                 ))}
               </AnimatePresence>
             </motion.div>
+          ) : (
+            <div className="min-h-[150px] flex items-center justify-center">
+              <p className="text-body text-[#6B6560] italic opacity-80 text-center">
+                The well wishes are rolling in. Be the first to leave one publicly!
+              </p>
+            </div>
           )}
         </div>
 

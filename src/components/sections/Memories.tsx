@@ -2,22 +2,34 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { memories } from "@/data/content";
 import MemoryItem from "@/components/ui/MemoryItem";
 
-export default function Memories() {
+interface DbMemory {
+  id: string;
+  name: string;
+  memory: string;
+  relationship: string | null;
+  photoUrl: string | null;
+}
+
+interface MemoriesProps {
+  memories: DbMemory[];
+}
+
+export default function Memories({ memories }: MemoriesProps) {
   const reduce = useReducedMotion();
   const [current, setCurrent] = useState(0);
   const total = memories.length;
 
   useEffect(() => {
+    if (total === 0) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % total);
     }, 8000);
     return () => clearInterval(timer);
   }, [total]);
 
-  const memory = memories[current];
+  const memory = total > 0 ? memories[current] : null;
 
   return (
     <section
@@ -41,40 +53,50 @@ export default function Memories() {
             </p>
             
             {/* Carousel indicators */}
-            <div className="flex gap-2.5" aria-hidden="true">
-              {memories.map((_, i) => (
-                <span
-                  key={i}
-                  className={`transition-all duration-500 rounded-full ${
-                    i === current
-                      ? "w-8 h-1.5 bg-[#C9A96E]"
-                      : "w-2 h-2 bg-[#DDD8D0]"
-                  }`}
-                />
-              ))}
-            </div>
+            {total > 0 && (
+              <div className="flex gap-2.5" aria-hidden="true">
+                {memories.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`transition-all duration-500 rounded-full ${
+                      i === current
+                        ? "w-8 h-1.5 bg-[#C9A96E]"
+                        : "w-2 h-2 bg-[#DDD8D0]"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Right — memory carousel (slides right to left) */}
           <div className="relative min-h-[300px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={memory.id}
-                initial={reduce ? { opacity: 0 } : { opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={reduce ? { opacity: 0 } : { opacity: 0, x: -40 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="w-full"
-              >
-                <MemoryItem
-                  contributorName={memory.contributorName}
-                  relationship={memory.relationship}
-                  memory={memory.memory}
-                  photo={memory.photo}
-                  isLast={true} /* Removes the bottom border since it's a carousel */
-                />
-              </motion.div>
-            </AnimatePresence>
+            {total > 0 && memory ? (
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={memory.id}
+                  initial={reduce ? { opacity: 0 } : { opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={reduce ? { opacity: 0 } : { opacity: 0, x: -40 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  className="w-full"
+                >
+                  <MemoryItem
+                    contributorName={memory.name}
+                    relationship={memory.relationship}
+                    memory={memory.memory}
+                    photo={memory.photoUrl}
+                    isLast={true} /* Removes the bottom border since it's a carousel */
+                  />
+                </motion.div>
+              </AnimatePresence>
+            ) : (
+              <div className="h-full flex items-center justify-center min-h-[300px] border border-dashed border-[#DDD8D0] rounded-xl p-8">
+                <p className="text-body text-[#6B6560] italic opacity-80 text-center">
+                  Beautiful memories are being collected. They will appear here soon.
+                </p>
+              </div>
+            )}
           </div>
 
         </div>

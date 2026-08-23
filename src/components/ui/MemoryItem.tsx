@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 interface MemoryItemProps {
   contributorName: string;
-  relationship:    string;
+  relationship:    string | null;
   memory:          string;
   photo:           string | null;
   isLast:          boolean;
@@ -60,6 +62,18 @@ export default function MemoryItem({
           {memory}
         </p>
       </blockquote>
+      
+      {photo && (
+        <div className="mt-8 relative w-full max-w-[60ch] aspect-video overflow-hidden rounded-xl border border-[#DDD8D0]">
+          <Image
+            src={photo}
+            alt={`Memory shared by ${contributorName}`}
+            fill
+            sizes="(max-width: 768px) 100vw, 60ch"
+            className="object-cover"
+          />
+        </div>
+      )}
     </article>
   );
 }
