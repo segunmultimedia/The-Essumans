@@ -51,3 +51,18 @@ export async function submitWish(formData: FormData) {
     return { error: "Something went wrong. Please try again later." };
   }
 }
+
+export async function getApprovedWishes(skip: number, take: number) {
+  return prisma.wish.findMany({
+    where: { status: "APPROVED" },
+    orderBy: { approvedAt: "desc" },
+    skip,
+    take,
+    select: {
+      id: true,
+      name: true,
+      message: true,
+      relationship: true,
+    }
+  });
+}

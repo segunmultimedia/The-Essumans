@@ -52,19 +52,27 @@ export default function Memories({ memories }: MemoriesProps) {
               Stories from the people who have shared the journey with him.
             </p>
             
-            {/* Carousel indicators */}
+            {/* Carousel indicators & CTA */}
             {total > 0 && (
-              <div className="flex gap-2.5" aria-hidden="true">
-                {memories.map((_, i) => (
-                  <span
-                    key={i}
-                    className={`transition-all duration-500 rounded-full ${
-                      i === current
-                        ? "w-8 h-1.5 bg-[#C9A96E]"
-                        : "w-2 h-2 bg-[#DDD8D0]"
-                    }`}
-                  />
-                ))}
+              <div className="flex flex-col gap-8">
+                <div className="flex gap-2.5" aria-hidden="true">
+                  {memories.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`transition-all duration-500 rounded-full ${
+                        i === current
+                          ? "w-8 h-1.5 bg-[#C9A96E]"
+                          : "w-2 h-2 bg-[#DDD8D0]"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <a 
+                  href="/memories" 
+                  className="w-max text-sm font-sans font-medium text-[#C9A96E] hover:text-[#B6965B] uppercase tracking-widest transition-colors underline-offset-4 hover:underline"
+                >
+                  View All Memories
+                </a>
               </div>
             )}
           </div>

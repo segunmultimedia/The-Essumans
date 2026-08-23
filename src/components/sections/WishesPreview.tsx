@@ -132,10 +132,18 @@ export default function WishesPreview({ wishes }: WishesPreviewProps) {
         </div>
 
         {/* CTA */}
-        <div className="mt-8 md:mt-12 flex flex-col items-center relative z-10">
+        <div className="mt-8 md:mt-12 flex flex-col items-center gap-6 relative z-10">
           <Button variant="secondary" onClick={handleWishClick}>
             Leave Your Wish
           </Button>
+          {wishes.length > 0 && (
+            <a 
+              href="/wishes" 
+              className="text-sm font-sans font-medium text-[#C9A96E] hover:text-[#B6965B] uppercase tracking-widest transition-colors underline-offset-4 hover:underline"
+            >
+              View All Wishes
+            </a>
+          )}
         </div>
       </div>
 

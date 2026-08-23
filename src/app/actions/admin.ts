@@ -14,6 +14,7 @@ export async function approveWish(id: string) {
     data: { status: "APPROVED", approvedAt: new Date() },
   });
   revalidatePath("/admin/wishes");
+  revalidatePath("/wishes");
   revalidatePath("/");
 }
 
@@ -24,6 +25,7 @@ export async function rejectWish(id: string) {
     data: { status: "REJECTED" },
   });
   revalidatePath("/admin/wishes");
+  revalidatePath("/wishes");
   revalidatePath("/");
 }
 
@@ -33,6 +35,7 @@ export async function deleteWish(id: string) {
     where: { id },
   });
   revalidatePath("/admin/wishes");
+  revalidatePath("/wishes");
   revalidatePath("/");
 }
 
@@ -46,6 +49,7 @@ export async function approveMemory(id: string) {
     data: { status: "APPROVED", approvedAt: new Date() },
   });
   revalidatePath("/admin/memories");
+  revalidatePath("/memories");
   revalidatePath("/");
 }
 
@@ -56,6 +60,7 @@ export async function rejectMemory(id: string) {
     data: { status: "REJECTED" },
   });
   revalidatePath("/admin/memories");
+  revalidatePath("/memories");
   revalidatePath("/");
 }
 
@@ -88,5 +93,6 @@ export async function deleteMemory(id: string) {
   });
   
   revalidatePath("/admin/memories");
+  revalidatePath("/memories");
   revalidatePath("/");
 }

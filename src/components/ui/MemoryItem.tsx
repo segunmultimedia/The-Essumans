@@ -6,6 +6,7 @@ interface MemoryItemProps {
   memory:          string;
   photo:           string | null;
   isLast:          boolean;
+  onPhotoClick?:   () => void;
 }
 
 function Avatar({ name }: { name: string }) {
@@ -32,6 +33,7 @@ export default function MemoryItem({
   memory,
   photo,
   isLast,
+  onPhotoClick,
 }: MemoryItemProps) {
   return (
     <article
@@ -64,7 +66,10 @@ export default function MemoryItem({
       </blockquote>
       
       {photo && (
-        <div className="mt-8 relative w-full max-w-[60ch] aspect-video overflow-hidden rounded-xl border border-[#DDD8D0]">
+        <div 
+          className={`mt-8 relative w-full max-w-[60ch] aspect-video overflow-hidden rounded-xl border border-[#DDD8D0] ${onPhotoClick ? 'cursor-zoom-in hover:opacity-95 transition-opacity' : ''}`}
+          onClick={onPhotoClick}
+        >
           <Image
             src={photo}
             alt={`Memory shared by ${contributorName}`}

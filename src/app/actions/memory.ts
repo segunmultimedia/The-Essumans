@@ -109,3 +109,19 @@ export async function submitMemory(formData: FormData) {
     return { error: "Something went wrong. Please try again later." };
   }
 }
+
+export async function getApprovedMemories(skip: number, take: number) {
+  return prisma.memory.findMany({
+    where: { status: "APPROVED" },
+    orderBy: { approvedAt: "desc" },
+    skip,
+    take,
+    select: {
+      id: true,
+      name: true,
+      memory: true,
+      relationship: true,
+      photoUrl: true,
+    }
+  });
+}
