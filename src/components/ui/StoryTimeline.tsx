@@ -20,7 +20,7 @@ export default function StoryTimeline() {
     <div className="mt-16 md:mt-20 lg:mt-24">
       {storyMilestones.map((milestone, i) => {
         const isLast = i === storyMilestones.length - 1;
-        const isOdd  = i % 2 !== 0;
+        const imageRight = i % 2 === 0; // Flip the pattern so first item has text left, image right
 
         if (isLast) {
           return (
@@ -67,9 +67,8 @@ export default function StoryTimeline() {
           >
             <div
               className={[
-                "w-full",
-                "order-2 md:order-none",
-                isOdd ? "md:order-2" : "md:order-1",
+                "w-full order-2",
+                imageRight ? "md:order-2" : "md:order-1",
               ].join(" ")}
             >
               {milestone.image ? (
@@ -89,9 +88,8 @@ export default function StoryTimeline() {
 
             <div
               className={[
-                "flex flex-col",
-                "order-1 md:order-none",
-                isOdd ? "md:order-1" : "md:order-2",
+                "flex flex-col order-1",
+                imageRight ? "md:order-1" : "md:order-2",
               ].join(" ")}
             >
               {milestone.year && (
