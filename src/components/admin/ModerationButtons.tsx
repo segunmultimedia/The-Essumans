@@ -54,12 +54,12 @@ export function ModerationButtons({ type, id, status, onApprove, onReject, onDel
 
   return (
     <>
-      <div className="flex flex-wrap gap-2">
+      <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-2 w-full sm:w-auto mt-4 sm:mt-0">
         {status !== "APPROVED" && (
           <button
             onClick={handleApprove}
             disabled={isPending}
-            className="px-3 py-1.5 text-xs font-medium text-white bg-green-600 rounded hover:bg-green-700 disabled:opacity-50 transition-colors"
+            className="h-11 sm:h-8 px-3 text-sm sm:text-xs font-medium text-white bg-green-600 rounded-md sm:rounded hover:bg-green-700 disabled:opacity-50 transition-colors col-span-1"
           >
             Approve
           </button>
@@ -68,7 +68,7 @@ export function ModerationButtons({ type, id, status, onApprove, onReject, onDel
           <button
             onClick={handleReject}
             disabled={isPending}
-            className="px-3 py-1.5 text-xs font-medium text-amber-700 bg-amber-100 rounded hover:bg-amber-200 disabled:opacity-50 transition-colors"
+            className="h-11 sm:h-8 px-3 text-sm sm:text-xs font-medium text-amber-700 bg-amber-100 rounded-md sm:rounded hover:bg-amber-200 disabled:opacity-50 transition-colors col-span-1"
           >
             Reject
           </button>
@@ -76,7 +76,7 @@ export function ModerationButtons({ type, id, status, onApprove, onReject, onDel
         <button
           onClick={openDeleteModal}
           disabled={isPending}
-          className="px-3 py-1.5 text-xs font-medium text-red-700 bg-red-100 rounded hover:bg-red-200 disabled:opacity-50 transition-colors"
+          className="h-11 sm:h-8 px-3 text-sm sm:text-xs font-medium text-red-700 bg-red-100 rounded-md sm:rounded hover:bg-red-200 disabled:opacity-50 transition-colors col-span-2 sm:col-span-1"
         >
           Delete
         </button>
@@ -84,15 +84,15 @@ export function ModerationButtons({ type, id, status, onApprove, onReject, onDel
 
       {isModalOpen && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-[#1E1E1E]/40 backdrop-blur-sm"
           onClick={closeDeleteModal}
         >
           <div 
-            className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden flex flex-col"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
+            className="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="p-6 md:p-8">
+              <h3 className="text-xl font-serif text-[#5C202C] mb-3">
                 Delete this {type.toLowerCase()}?
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
@@ -103,18 +103,18 @@ export function ModerationButtons({ type, id, status, onApprove, onReject, onDel
               </p>
             </div>
             
-            <div className="bg-gray-50 px-6 py-4 flex justify-end gap-3 border-t border-gray-100">
+            <div className="bg-[#FBF7F1] px-6 py-4 md:px-8 flex flex-col sm:flex-row justify-end gap-3 border-t border-[#B89558]/20">
               <button
                 onClick={closeDeleteModal}
                 disabled={isPending}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-900 disabled:opacity-50 transition-colors"
+                className="h-11 sm:h-10 px-4 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors order-2 sm:order-1"
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmDelete}
                 disabled={isPending}
-                className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:opacity-50 transition-colors flex items-center"
+                className="h-11 sm:h-10 px-4 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:opacity-50 transition-colors flex items-center justify-center order-1 sm:order-2"
               >
                 {isPending ? "Deleting..." : "Delete Permanently"}
               </button>
