@@ -36,7 +36,7 @@ export async function submitWish(formData: FormData) {
       return { error: "Relationship is too long." };
     }
 
-    await prisma.wish.create({
+    const wish = await prisma.wish.create({
       data: {
         name,
         message,
@@ -44,6 +44,15 @@ export async function submitWish(formData: FormData) {
         status: "PENDING", // Always PENDING for new submissions
       },
     });
+
+    // Send email notification safely
+    try {
+      const { sendAdminNotification, buildWishEmailHtml } = await import("@/lib/email");
+      const html = buildWishEmailHtml(wish.name, wish.relationship, wish.message, wish.createdAt);
+      await sendAdminNotification("New Wish Awaiting Approval — The Essumans", html);
+    } catch (emailError) {
+      console.error("Failed to send wish notification email:", emailError);
+    }
 
     return { success: true };
   } catch (error) {

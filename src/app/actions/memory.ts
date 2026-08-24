@@ -83,7 +83,7 @@ export async function submitMemory(formData: FormData) {
     }
 
     // Create DB record
-    await prisma.memory.create({
+    const newMemory = await prisma.memory.create({
       data: {
         name,
         memory,
@@ -92,6 +92,15 @@ export async function submitMemory(formData: FormData) {
         status: "PENDING", // Always PENDING for new submissions
       },
     });
+
+    // Send email notification safely
+    try {
+      const { sendAdminNotification, buildMemoryEmailHtml } = await import("@/lib/email");
+      const html = buildMemoryEmailHtml(newMemory.name, newMemory.relationship, newMemory.memory, !!newMemory.photoUrl, newMemory.createdAt);
+      await sendAdminNotification("New Memory Awaiting Approval — The Essumans", html);
+    } catch (emailError) {
+      console.error("Failed to send memory notification email:", emailError);
+    }
 
     return { success: true };
   } catch (error) {
