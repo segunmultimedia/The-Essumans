@@ -30,17 +30,17 @@ export default function Gallery() {
       <section
         id="gallery"
         aria-label="Our Moments — gallery"
-        className="w-full bg-[#FAF8F5] section-pad"
+        className="w-full bg-[#FBF7F1] section-pad"
       >
         <div className="container-e">
           {/* Heading */}
           <div className="text-center max-w-[560px] mx-auto mb-10 md:mb-14">
-            <p className="text-eyebrow text-[#C9A96E] mb-5">Photographs</p>
+            <p className="text-eyebrow text-[#5C202C] mb-5">Photographs</p>
             <h2 className="text-section-heading text-[#1E1E1E] mb-5">
               Our Moments
             </h2>
             <p className="text-body text-[#6B6560]">
-              Photographs from a day — and a love — worth remembering.
+              Photographs from a day and a love worth remembering.
             </p>
           </div>
 

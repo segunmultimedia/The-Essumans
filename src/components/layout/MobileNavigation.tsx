@@ -67,10 +67,10 @@ export default function MobileNavigation({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed top-0 right-0 bottom-0 z-50 w-[80vw] max-w-[320px] bg-[#FAF8F5] flex flex-col shadow-2xl"
+            className="fixed top-0 right-0 bottom-0 z-50 w-[80vw] max-w-[320px] bg-[#FBF7F1] flex flex-col shadow-2xl"
           >
             {/* Top bar */}
-            <div className="flex items-center justify-between px-7 pt-6 pb-5 border-b border-[#EDE7DC]">
+            <div className="flex items-center justify-between px-7 pt-6 pb-5 border-b border-[#B89558]/20">
               <span className="font-serif tracking-[0.2em] text-sm text-[#1E1E1E]">
                 THE ESSUMAN&apos;S
               </span>
@@ -78,7 +78,7 @@ export default function MobileNavigation({
                 ref={closeRef}
                 onClick={onClose}
                 aria-label="Close navigation"
-                className="flex items-center justify-center w-11 h-11 -mr-2 text-[#1E1E1E] hover:text-[#C9A96E] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-[#C9A96E] focus-visible:outline-offset-2"
+                className="flex items-center justify-center w-11 h-11 -mr-2 text-[#1E1E1E] hover:text-[#5C202C] hover:scale-110 hover:-rotate-90 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-[#B89558] focus-visible:outline-offset-2"
               >
                 <X size={20} strokeWidth={1.5} />
               </button>
@@ -98,7 +98,7 @@ export default function MobileNavigation({
                       ref={i === 0 ? firstLinkRef : undefined}
                       href={link.href}
                       onClick={onClose}
-                      className="block py-4 border-b border-[#EDE7DC] text-nav text-[#1E1E1E] hover:text-[#C9A96E] transition-colors duration-200 focus-visible:outline-none focus-visible:text-[#C9A96E]"
+                      className="block py-4 border-b border-[#B89558]/20 text-nav text-[#1E1E1E] hover:text-[#5C202C] hover:pl-2 transition-all duration-300 focus-visible:outline-none focus-visible:text-[#5C202C]"
                     >
                       {link.label}
                     </a>

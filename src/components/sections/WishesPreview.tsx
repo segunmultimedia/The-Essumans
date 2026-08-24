@@ -76,13 +76,13 @@ export default function WishesPreview({ wishes }: WishesPreviewProps) {
     <section
       id="wishes"
       aria-label="Words from the heart — guest wishes"
-      className="w-full bg-[#FFFEF9] section-pad overflow-hidden"
+      className="w-full bg-[#FBF7F1] section-pad overflow-hidden"
     >
       <div className="container-e">
         {/* Heading */}
-        <div className="text-center max-w-[520px] mx-auto mb-12 md:mb-16">
-          <p className="text-eyebrow text-[#C9A96E] mb-5">Guest Wishes</p>
-          <h2 className="text-section-heading text-[#1E1E1E] mb-5">
+        <div className="text-center max-w-[800px] mx-auto mb-12 md:mb-16">
+          <p className="text-eyebrow text-[#5C202C] mb-5">Guest Wishes</p>
+          <h2 className="text-section-heading text-[#1E1E1E] mb-5 md:whitespace-nowrap">
             Words From The Heart
           </h2>
           <p className="text-body text-[#6B6560]">
@@ -139,7 +139,7 @@ export default function WishesPreview({ wishes }: WishesPreviewProps) {
           {wishes.length > 0 && (
             <a 
               href="/wishes" 
-              className="text-sm font-sans font-medium text-[#C9A96E] hover:text-[#B6965B] uppercase tracking-widest transition-colors underline-offset-4 hover:underline"
+              className="text-sm font-sans font-medium text-[#5C202C] hover:text-[#B6965B] uppercase tracking-widest transition-colors underline-offset-4 hover:underline"
             >
               View All Wishes
             </a>

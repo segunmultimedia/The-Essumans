@@ -20,7 +20,7 @@ export default function FinalCTA() {
   return (
     <section
       aria-label="Be Part of Their Story"
-      className="w-full bg-[#EDE7DC] section-pad"
+      className="w-full bg-[#FBF7F1] section-pad"
     >
       <div className="container-e">
         <div className="max-w-[600px] mx-auto text-center">

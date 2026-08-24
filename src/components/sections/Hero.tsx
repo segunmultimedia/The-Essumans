@@ -52,10 +52,10 @@ export default function Hero() {
           THE ESSUMAN&apos;S
         </motion.h1>
 
-        {/* Champagne rule */}
+        {/* Accent rule */}
         <motion.span
           {...fade(0.45)}
-          className="accent-line mx-auto mb-7"
+          className="accent-line !bg-white mx-auto mb-7"
           aria-hidden="true"
         />
 

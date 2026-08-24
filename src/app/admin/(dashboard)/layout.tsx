@@ -36,6 +36,12 @@ export default async function AdminLayout({ children }: { children: ReactNode })
             >
               Memories
             </Link>
+            <Link 
+              href="/admin/quotes" 
+              className="px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 transition-colors whitespace-nowrap"
+            >
+              Kwabena Once Said
+            </Link>
             
             <form action={logoutAction} className="mt-auto hidden md:block pt-8">
               <button 

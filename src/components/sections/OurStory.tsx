@@ -5,12 +5,12 @@ export default function OurStory() {
     <section
       id="our-story"
       aria-label="Our Story"
-      className="w-full bg-[#FFFEF9] section-pad"
+      className="w-full bg-[#FBF7F1] section-pad"
     >
       <div className="container-e">
         {/* Section intro — centered header block */}
         <div className="text-center max-w-[600px] mx-auto">
-          <p className="text-eyebrow text-[#C9A96E] mb-5">The Essumans</p>
+          <p className="text-eyebrow text-[#5C202C] mb-5">The Essumans</p>
           <h2 className="text-section-heading text-[#1E1E1E] mb-5">
             Our Story
           </h2>

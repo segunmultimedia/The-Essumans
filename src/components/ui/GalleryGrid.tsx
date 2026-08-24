@@ -43,7 +43,7 @@ export default function GalleryGrid({ images, onImageClick }: GalleryGridProps) 
             <button
               onClick={() => onImageClick(img)}
               aria-label={`View: ${img.alt}`}
-              className="absolute inset-0 w-full h-full focus-visible:outline-2 focus-visible:outline-[#C9A96E] focus-visible:-outline-offset-2 z-10"
+              className="absolute inset-0 w-full h-full focus-visible:outline-2 focus-visible:outline-[#B89558] focus-visible:-outline-offset-2 z-10"
             />
             <Image
               src={img.src}

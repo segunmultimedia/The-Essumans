@@ -26,6 +26,11 @@ export default async function Home() {
     orderBy: { approvedAt: "desc" }
   });
 
+  const approvedQuotes = await prisma.kwabenaQuote.findMany({
+    where: { status: "APPROVED" },
+    orderBy: { createdAt: "asc" }
+  });
+
   return (
     <>
       <Header />
@@ -35,7 +40,7 @@ export default async function Home() {
         <OurStory />
         <Gallery />
         <WishesPreview wishes={approvedWishes} />
-        <KwabenaOnceSaid />
+        <KwabenaOnceSaid quotes={approvedQuotes} />
         <Memories memories={approvedMemories} />
         <FinalCTA />
       </main>

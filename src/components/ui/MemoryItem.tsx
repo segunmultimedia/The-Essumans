@@ -18,7 +18,7 @@ function Avatar({ name }: { name: string }) {
   return (
     <div
       aria-hidden="true"
-      className="w-11 h-11 rounded-full bg-[#EDE7DC] flex items-center justify-center flex-shrink-0"
+      className="w-11 h-11 rounded-full bg-[#FBF7F1] flex items-center justify-center flex-shrink-0"
     >
       <span className="font-serif text-sm text-[#6B6560] font-500 uppercase">
         {initials.toUpperCase()}
@@ -39,7 +39,7 @@ export default function MemoryItem({
     <article
       className={[
         "py-10 md:py-12",
-        !isLast ? "border-b border-[#DDD8D0]" : "",
+        !isLast ? "border-b border-[#B89558]" : "",
       ].join(" ")}
     >
       {/* Contributor */}
@@ -56,7 +56,7 @@ export default function MemoryItem({
       </header>
 
       {/* Memory — champagne left border, constrained line length */}
-      <blockquote className="border-l-2 border-[#C9A96E] pl-6">
+      <blockquote className="border-l-2 border-[#B89558] pl-6">
         <p
           className="font-serif italic text-[#1E1E1E] leading-relaxed max-w-[60ch]"
           style={{ fontSize: "clamp(1.0625rem, 1.5vw, 1.25rem)" }}
@@ -67,7 +67,7 @@ export default function MemoryItem({
       
       {photo && (
         <div 
-          className={`mt-8 relative w-full max-w-[60ch] aspect-video overflow-hidden rounded-xl border border-[#DDD8D0] ${onPhotoClick ? 'cursor-zoom-in hover:opacity-95 transition-opacity' : ''}`}
+          className={`mt-8 relative w-full max-w-[60ch] aspect-video overflow-hidden rounded-xl border border-[#B89558] ${onPhotoClick ? 'cursor-zoom-in hover:opacity-95 transition-opacity' : ''}`}
           onClick={onPhotoClick}
         >
           <Image

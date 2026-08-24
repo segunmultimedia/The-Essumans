@@ -56,7 +56,7 @@ export default function AudioPlayer() {
         transition={{ delay: 1.5, duration: 0.8 }}
         onClick={togglePlay}
         aria-label={isPlaying ? "Pause music" : "Play music"}
-        className="fixed bottom-6 left-6 md:bottom-10 md:left-10 z-50 flex items-center justify-center w-11 h-11 rounded-full bg-[#FFFEF9] text-[#1E1E1E] shadow-[0_4px_20px_rgba(0,0,0,0.08)] border border-[#DDD8D0] hover:bg-[#FAF8F5] transition-colors focus-visible:outline-2 focus-visible:outline-[#C9A96E] focus-visible:outline-offset-2"
+        className="fixed bottom-6 left-6 md:bottom-10 md:left-10 z-50 flex items-center justify-center w-11 h-11 rounded-full bg-[#FBF7F1] text-[#1E1E1E] shadow-[0_4px_20px_rgba(0,0,0,0.08)] border border-[#B89558] hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)] transition-all duration-300 focus-visible:outline-2 focus-visible:outline-[#B89558] focus-visible:outline-offset-2"
       >
         <AnimatePresence mode="wait">
           {isPlaying ? (
@@ -67,7 +67,7 @@ export default function AudioPlayer() {
               exit={{ opacity: 0, rotate: 90 }}
               transition={{ duration: 0.2 }}
             >
-              <Volume2 size={18} strokeWidth={1.5} className="text-[#C9A96E]" />
+              <Volume2 size={18} strokeWidth={1.5} className="text-[#5C202C]" />
             </motion.div>
           ) : (
             <motion.div
@@ -84,7 +84,7 @@ export default function AudioPlayer() {
 
         {/* Pulse ring when not playing to encourage click if autoplay was blocked */}
         {!isPlaying && !hasInteracted && (
-          <span className="absolute inset-0 rounded-full border border-[#C9A96E] animate-ping opacity-20 pointer-events-none" />
+          <span className="absolute inset-0 rounded-full border border-[#B89558] animate-ping opacity-20 pointer-events-none" />
         )}
       </motion.button>
     </>

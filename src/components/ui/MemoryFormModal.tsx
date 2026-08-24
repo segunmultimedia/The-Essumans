@@ -162,7 +162,7 @@ export default function MemoryFormModal({ isOpen, onClose }: MemoryFormModalProp
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className={`w-full ${success ? "max-w-sm" : "max-w-md"} mx-auto bg-[#FFFEF9] rounded-md shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-[#EDE7DC] flex flex-col my-auto`}
+            className={`w-full ${success ? "max-w-sm" : "max-w-md"} mx-auto bg-[#FBF7F1] rounded-md shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-[#FBF7F1] flex flex-col my-auto`}
             onClick={(e) => e.stopPropagation()}
           >
             <AnimatePresence mode="wait">
@@ -176,12 +176,12 @@ export default function MemoryFormModal({ isOpen, onClose }: MemoryFormModalProp
                   className="flex flex-col"
                 >
                   {/* Header */}
-                  <div className="relative px-6 pt-8 pb-5 border-b border-[#EDE7DC] text-center shrink-0">
+                  <div className="relative px-6 pt-8 pb-5 border-b border-[#FBF7F1] text-center shrink-0">
                     <button
                       ref={closeRef}
                       onClick={onClose}
                       aria-label="Close modal"
-                      className="absolute top-4 right-4 text-[#6B6560] hover:text-[#1E1E1E] transition-colors p-1"
+                      className="absolute top-4 right-4 text-[#6B6560] hover:text-[#5C202C] hover:scale-110 hover:-rotate-90 transition-all duration-300 p-1"
                     >
                       <X size={24} strokeWidth={1} />
                     </button>
@@ -212,7 +212,7 @@ export default function MemoryFormModal({ isOpen, onClose }: MemoryFormModalProp
                           name="name"
                           required
                           maxLength={100}
-                          className="w-full px-3 py-2.5 rounded-sm border border-[#EDE7DC] bg-[#FAF8F5] focus:outline-none focus:ring-1 focus:ring-[#C9A96E] focus:border-[#C9A96E] transition-colors text-[#1E1E1E]"
+                          className="w-full px-3 py-2.5 rounded-sm border border-[#FBF7F1] bg-[#FBF7F1] focus:outline-none focus:ring-1 focus:ring-[#B89558] focus:border-[#B89558] transition-colors text-[#1E1E1E]"
                         />
                       </div>
 
@@ -225,7 +225,7 @@ export default function MemoryFormModal({ isOpen, onClose }: MemoryFormModalProp
                           id="relationship"
                           name="relationship"
                           maxLength={100}
-                          className="w-full px-3 py-2.5 rounded-sm border border-[#EDE7DC] bg-[#FAF8F5] focus:outline-none focus:ring-1 focus:ring-[#C9A96E] focus:border-[#C9A96E] transition-colors text-[#1E1E1E]"
+                          className="w-full px-3 py-2.5 rounded-sm border border-[#FBF7F1] bg-[#FBF7F1] focus:outline-none focus:ring-1 focus:ring-[#B89558] focus:border-[#B89558] transition-colors text-[#1E1E1E]"
                         />
                       </div>
 
@@ -241,11 +241,11 @@ export default function MemoryFormModal({ isOpen, onClose }: MemoryFormModalProp
                           rows={4}
                           value={memoryText}
                           onChange={handleMemoryChange}
-                          className="w-full px-3 py-2.5 rounded-sm border border-[#EDE7DC] bg-[#FAF8F5] focus:outline-none focus:ring-1 focus:ring-[#C9A96E] focus:border-[#C9A96E] transition-colors text-[#1E1E1E] resize-y placeholder:text-[#6B6560]/50 placeholder:font-serif placeholder:italic"
+                          className="w-full px-3 py-2.5 rounded-sm border border-[#FBF7F1] bg-[#FBF7F1] focus:outline-none focus:ring-1 focus:ring-[#B89558] focus:border-[#B89558] transition-colors text-[#1E1E1E] resize-y placeholder:text-[#6B6560]/50 placeholder:font-serif placeholder:italic"
                           placeholder="Share your memory..."
                         />
                         <div className="flex justify-end mt-1.5">
-                          <span className={`text-[11px] ${wordCount >= 80 ? 'text-[#C9A96E]' : 'text-[#6B6560]'}`}>
+                          <span className={`text-[11px] ${wordCount >= 80 ? 'text-[#5C202C]' : 'text-[#6B6560]'}`}>
                             {wordCount} / 80 words
                           </span>
                         </div>
@@ -265,13 +265,13 @@ export default function MemoryFormModal({ isOpen, onClose }: MemoryFormModalProp
                           <button
                             type="button"
                             onClick={() => fileInputRef.current?.click()}
-                            className="flex items-center gap-3 text-left group cursor-pointer outline-none focus-visible:ring-1 focus-visible:ring-[#C9A96E] rounded-sm p-1 -ml-1"
+                            className="flex items-center gap-3 text-left group cursor-pointer outline-none focus-visible:ring-1 focus-visible:ring-[#B89558] rounded-sm p-1 -ml-1 hover:-translate-y-1 transition-transform duration-200"
                           >
-                            <div className="w-9 h-9 rounded-full border border-[#EDE7DC] flex items-center justify-center text-[#C9A96E] group-hover:bg-[#FAF8F5] transition-colors shrink-0">
+                            <div className="w-9 h-9 rounded-full border border-[#FBF7F1] flex items-center justify-center text-[#5C202C] group-hover:bg-[#FBF7F1] transition-colors shrink-0">
                               <ImageIcon size={16} strokeWidth={1.5} />
                             </div>
                             <div className="flex flex-col">
-                              <span className="text-sm text-[#1E1E1E] group-hover:text-[#C9A96E] transition-colors">
+                              <span className="text-sm text-[#1E1E1E] group-hover:text-[#5C202C] transition-colors">
                                 Add a photo
                               </span>
                               <span className="text-[11px] text-[#6B6560]">
@@ -281,7 +281,7 @@ export default function MemoryFormModal({ isOpen, onClose }: MemoryFormModalProp
                           </button>
                         ) : (
                           <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-sm border border-[#EDE7DC] overflow-hidden shrink-0 bg-[#FAF8F5]">
+                            <div className="w-12 h-12 rounded-sm border border-[#FBF7F1] overflow-hidden shrink-0 bg-[#FBF7F1]">
                               {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img 
                                 src={photoPreview} 
@@ -297,15 +297,15 @@ export default function MemoryFormModal({ isOpen, onClose }: MemoryFormModalProp
                                 <button
                                   type="button"
                                   onClick={() => fileInputRef.current?.click()}
-                                  className="text-[#C9A96E] hover:text-[#1E1E1E] transition-colors"
+                                  className="text-[#5C202C] hover:text-[#5C202C] hover:scale-105 transition-all duration-200"
                                 >
                                   Change
                                 </button>
-                                <span className="text-[#EDE7DC]">|</span>
+                                <span className="text-[#FBF7F1]">|</span>
                                 <button
                                   type="button"
                                   onClick={handleRemovePhoto}
-                                  className="text-[#6B6560] hover:text-red-500 transition-colors"
+                                  className="text-[#6B6560] hover:text-red-500 hover:scale-105 transition-all duration-200"
                                 >
                                   Remove
                                 </button>
@@ -336,7 +336,7 @@ export default function MemoryFormModal({ isOpen, onClose }: MemoryFormModalProp
                   transition={{ delay: 0.1, duration: 0.3 }}
                   className="text-center px-8 py-12"
                 >
-                  <div className="w-12 h-12 border border-[#EDE7DC] text-[#C9A96E] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-12 h-12 border border-[#FBF7F1] text-[#5C202C] rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
                     </svg>

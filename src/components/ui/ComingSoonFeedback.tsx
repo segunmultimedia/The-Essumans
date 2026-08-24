@@ -23,7 +23,7 @@ export function ComingSoonFeedback({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -4 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
-          className="font-serif italic text-base text-[#C9A96E] mt-5 text-center"
+          className="font-serif italic text-base text-[#5C202C] mt-5 text-center"
         >
           {message}
         </motion.p>

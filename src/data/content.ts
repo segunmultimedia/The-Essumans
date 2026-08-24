@@ -33,7 +33,7 @@ export const coupleIntroduction = {
   heading:    "The Beginning of Forever",
   subheading: "Kwabena & Kristine",
   // [REPLACE] — Replace with real introduction
-  body: "Two people. One beautiful beginning. Their story is one of love, patience, and perfect timing — the kind of love that quietly changes everything. Together, they begin a new chapter as the Essuman family.",
+  body: "Two people. One beautiful beginning. Their story is one of love, patience, and perfect timing. The kind of love that quietly changes everything. Together, they begin a new chapter as the Essuman family.",
   // [REPLACE] — Real couple portrait
   image:    "/essumans.jpg",
   imageAlt: "Kwabena and Kristine together",
@@ -44,7 +44,7 @@ export const storyMilestones = [
   {
     id:          "how-we-met",
     heading:     "How We Met",
-    year:        "2020",           // [REPLACE]
+    year:        "",           // [REPLACE]
     description: "Every great love story begins with a moment — a conversation, a glance, a shared laugh that stays with you longer than expected. This was theirs.",
     image:       "https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=900&q=80&auto=format&fit=crop",
     imageAlt:    "The beginning of their story",
@@ -52,7 +52,7 @@ export const storyMilestones = [
   {
     id:          "the-journey",
     heading:     "The Journey",
-    year:        "2020 – 2024",    // [REPLACE]
+    year:        "",    // [REPLACE]
     description: "Through seasons of growth and change, their bond deepened. They built something worth holding on to — not just love, but understanding, trust, and a future worth believing in.",
     image:       "/the-two.jpg",
     imageAlt:    "Their journey together",
@@ -69,7 +69,7 @@ export const storyMilestones = [
     id:          "the-wedding",
     heading:     "The Wedding",
     year:        "22 August 2026",
-    description: "Surrounded by the people who love them most, Kwabena and Kristine made their promises — not just to each other, but to a lifetime of shared moments, laughter, and love.",
+    description: "Surrounded by the people who love them most, Kwabena and Kristine made their promises not just to each other but to a lifetime of shared moments, laughter, and love.",
     image:       "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=900&q=80&auto=format&fit=crop",
     imageAlt:    "Their wedding ceremony",
   },
@@ -77,7 +77,7 @@ export const storyMilestones = [
     id:          "the-essumans",
     heading:     "The Essumans",
     year:        "Forever",
-    description: "And so, a family begins. Kwabena and Kristine Essuman — bound not just by vows, but by a love that will grow, endure, and be remembered.",
+    description: "And so, a family begins. Kwabena and Kristine Essuman bound not just by vows, but by a love that will grow, endure, and be remembered.",
     image:       null,
     imageAlt:    "",
   },
@@ -140,33 +140,7 @@ export const sampleWishes = [
   },
 ];
 
-// [REPLACE] — Kwabena quotes (sample/placeholder only — not real statements)
-export const kwabenaQuotes = [
-  {
-    id:           "q1",
-    quote:        "If we're doing it, we're doing it properly.",
-    attributedBy: "George",
-    context:      "On how he approaches everything in life",
-  },
-  {
-    id:           "q2",
-    quote:        "Good things take time. Great things take patience and purpose.",
-    attributedBy: "Michael",
-    context:      "On building anything worthwhile",
-  },
-  {
-    id:           "q3",
-    quote:        "Show up. Every time. That is the whole secret.",
-    attributedBy: "Ama",
-    context:      "On commitment — to people, to work, to love",
-  },
-  {
-    id:           "q4",
-    quote:        "The best decision I ever made was choosing her.",
-    attributedBy: "Kwabena himself",
-    context:      "On Kristine",
-  },
-];
+// Quotes have been migrated to the database.
 
 // [REPLACE] — Sample memories
 export const memories = [

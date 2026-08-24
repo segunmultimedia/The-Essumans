@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Our Story",      href: "#our-story" },
   { label: "Gallery",        href: "#gallery" },
   { label: "Wishes",         href: "#wishes" },
-  { label: "Kwabena Said",   href: "#kwabena-once-said" },
+  { label: "Kobby Said",     href: "#kobby-once-said" },
   { label: "Memories",       href: "#memories" },
 ];
 
@@ -27,7 +27,7 @@ export default function Header() {
     <>
       <header
         role="banner"
-        className="fixed top-0 left-0 right-0 z-40 bg-[#FFFEF9] border-b border-[#E8E2D9] transition-all duration-400"
+        className="fixed top-0 left-0 right-0 z-40 bg-[#FBF7F1] border-b border-[#B89558]/20 transition-all duration-400"
       >
         <div className="container-e h-[68px] md:h-[76px] flex items-center justify-between">
           {/* Wordmark */}
@@ -45,7 +45,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-nav relative py-1 text-[#6B6560] hover:text-[#1E1E1E] transition-colors duration-250 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[#C9A96E] after:transition-[width] after:duration-300 hover:after:w-full focus-visible:after:w-full focus-visible:outline-none"
+                className="text-nav relative py-1 text-[#6B6560] hover:text-[#5C202C] transition-colors duration-250 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[#5C202C] after:transition-[width] after:duration-300 hover:after:w-full focus-visible:after:w-full focus-visible:outline-none"
               >
                 {link.label}
               </a>
@@ -58,7 +58,7 @@ export default function Header() {
             aria-label="Open navigation menu"
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
-            className="lg:hidden flex items-center justify-center w-11 h-11 -mr-2 text-[#1E1E1E] hover:text-[#C9A96E] transition-colors duration-250"
+            className="lg:hidden flex items-center justify-center w-11 h-11 -mr-2 text-[#1E1E1E] hover:text-[#5C202C] hover:scale-110 transition-all duration-250"
           >
             <Menu size={22} strokeWidth={1.5} />
           </button>

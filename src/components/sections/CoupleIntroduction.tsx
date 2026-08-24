@@ -20,7 +20,7 @@ export default function CoupleIntroduction() {
     <section
       id="introduction"
       aria-label="Couple Introduction"
-      className="w-full bg-[#FAF8F5] section-pad overflow-hidden"
+      className="w-full bg-[#FBF7F1] section-pad overflow-hidden"
     >
       <div className="container-e">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-center">
@@ -33,7 +33,7 @@ export default function CoupleIntroduction() {
             variants={revealVariants}
             className="relative w-full max-w-[480px] mx-auto lg:max-w-none"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#FAF8F5]">
+            <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#FBF7F1]">
               <motion.div
                 animate={
                   reduce
@@ -63,7 +63,7 @@ export default function CoupleIntroduction() {
             </div>
             {/* Champagne bottom accent */}
             <span
-              className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C9A96E]"
+              className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#5C202C]"
               aria-hidden="true"
             />
           </motion.div>
@@ -79,7 +79,7 @@ export default function CoupleIntroduction() {
             className="flex flex-col items-start max-w-[480px] mx-auto lg:max-w-none"
           >
             {/* Eyebrow */}
-            <motion.p variants={revealVariants} className="text-eyebrow text-[#C9A96E] mb-5">
+            <motion.p variants={revealVariants} className="text-eyebrow text-[#5C202C] mb-5">
               {coupleIntroduction.subheading}
             </motion.p>
 

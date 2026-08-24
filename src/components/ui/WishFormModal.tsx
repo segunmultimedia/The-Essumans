@@ -91,7 +91,7 @@ export default function WishFormModal({ isOpen, onClose }: WishFormModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className={`w-full ${success ? "max-w-sm" : "max-w-lg"} bg-[#FFFEF9] rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]`}
+            className={`w-full ${success ? "max-w-sm" : "max-w-lg"} bg-[#FBF7F1] rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]`}
             onClick={(e) => e.stopPropagation()}
           >
             <AnimatePresence mode="wait">
@@ -105,7 +105,7 @@ export default function WishFormModal({ isOpen, onClose }: WishFormModalProps) {
                   className="flex flex-col flex-1 overflow-hidden"
                 >
                   {/* Header */}
-                  <div className="flex items-center justify-between px-6 py-5 border-b border-[#EDE7DC] shrink-0">
+                  <div className="flex items-center justify-between px-6 py-5 border-b border-[#FBF7F1] shrink-0">
                     <h3 className="text-section-heading text-[#1E1E1E] text-2xl !mb-0">
                       Leave a Wish
                     </h3>
@@ -113,7 +113,7 @@ export default function WishFormModal({ isOpen, onClose }: WishFormModalProps) {
                       ref={closeRef}
                       onClick={onClose}
                       aria-label="Close modal"
-                      className="text-[#6B6560] hover:text-[#1E1E1E] transition-colors"
+                      className="text-[#6B6560] hover:text-[#5C202C] hover:scale-110 hover:-rotate-90 transition-all duration-300"
                     >
                       <X size={24} strokeWidth={1.5} />
                     </button>
@@ -138,7 +138,7 @@ export default function WishFormModal({ isOpen, onClose }: WishFormModalProps) {
                           name="name"
                           required
                           maxLength={100}
-                          className="w-full px-4 py-3 rounded-lg border border-[#EDE7DC] bg-white focus:outline-none focus:ring-2 focus:ring-[#C9A96E]/50 focus:border-[#C9A96E] transition-colors text-[#1E1E1E] placeholder:text-[#6B6560]/50"
+                          className="w-full px-4 py-3 rounded-lg border border-[#FBF7F1] bg-white focus:outline-none focus:ring-2 focus:ring-[#B89558]/50 focus:border-[#B89558] transition-colors text-[#1E1E1E] placeholder:text-[#6B6560]/50"
                           placeholder="Your full name"
                         />
                       </div>
@@ -152,7 +152,7 @@ export default function WishFormModal({ isOpen, onClose }: WishFormModalProps) {
                           id="relationship"
                           name="relationship"
                           maxLength={100}
-                          className="w-full px-4 py-3 rounded-lg border border-[#EDE7DC] bg-white focus:outline-none focus:ring-2 focus:ring-[#C9A96E]/50 focus:border-[#C9A96E] transition-colors text-[#1E1E1E] placeholder:text-[#6B6560]/50"
+                          className="w-full px-4 py-3 rounded-lg border border-[#FBF7F1] bg-white focus:outline-none focus:ring-2 focus:ring-[#B89558]/50 focus:border-[#B89558] transition-colors text-[#1E1E1E] placeholder:text-[#6B6560]/50"
                           placeholder="e.g. Friend, Cousin, Colleague"
                         />
                       </div>
@@ -167,7 +167,7 @@ export default function WishFormModal({ isOpen, onClose }: WishFormModalProps) {
                           required
                           maxLength={1000}
                           rows={5}
-                          className="w-full px-4 py-3 rounded-lg border border-[#EDE7DC] bg-white focus:outline-none focus:ring-2 focus:ring-[#C9A96E]/50 focus:border-[#C9A96E] transition-colors text-[#1E1E1E] placeholder:text-[#6B6560]/50 resize-y"
+                          className="w-full px-4 py-3 rounded-lg border border-[#FBF7F1] bg-white focus:outline-none focus:ring-2 focus:ring-[#B89558]/50 focus:border-[#B89558] transition-colors text-[#1E1E1E] placeholder:text-[#6B6560]/50 resize-y"
                           placeholder="Write your wish for Kwabena & Kristine..."
                         />
                       </div>
@@ -202,7 +202,7 @@ export default function WishFormModal({ isOpen, onClose }: WishFormModalProps) {
                   transition={{ delay: 0.1, duration: 0.3 }}
                   className="text-center p-8 md:p-10 overflow-y-auto"
                 >
-                  <div className="w-16 h-16 bg-[#EDE7DC] text-[#C9A96E] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-16 h-16 bg-[#FBF7F1] text-[#5C202C] rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                     </svg>

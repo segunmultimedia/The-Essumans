@@ -96,3 +96,41 @@ export async function deleteMemory(id: string) {
   revalidatePath("/memories");
   revalidatePath("/");
 }
+
+// QUOTE ACTIONS
+
+export async function createQuote(data: { quote: string; submittedBy: string; context?: string }) {
+  await requireAdmin();
+  await prisma.kwabenaQuote.create({
+    data: {
+      quote: data.quote,
+      submittedBy: data.submittedBy,
+      context: data.context || null,
+      status: "APPROVED",
+      approvedAt: new Date(),
+    }
+  });
+  revalidatePath("/admin/quotes");
+  revalidatePath("/");
+}
+
+export async function updateQuote(id: string, data: { quote: string; submittedBy: string; context?: string }) {
+  await requireAdmin();
+  await prisma.kwabenaQuote.update({
+    where: { id },
+    data: {
+      quote: data.quote,
+      submittedBy: data.submittedBy,
+      context: data.context || null,
+    }
+  });
+  revalidatePath("/admin/quotes");
+  revalidatePath("/");
+}
+
+export async function deleteQuote(id: string) {
+  await requireAdmin();
+  await prisma.kwabenaQuote.delete({ where: { id } });
+  revalidatePath("/admin/quotes");
+  revalidatePath("/");
+}

@@ -29,17 +29,17 @@ export default async function WishesPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-32 pb-16 bg-[#FFFEF9]">
+      <main className="min-h-screen pt-32 pb-16 bg-[#FBF7F1]">
         <div className="container-e">
           <div className="mb-12 md:mb-16 text-center max-w-2xl mx-auto px-5">
             <Link 
               href="/" 
-              className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-[#9A948F] hover:text-[#C9A96E] transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-[#9A948F] hover:text-[#5C202C] transition-colors mb-8"
             >
               <span>←</span> Back to Home
             </Link>
             
-            <p className="text-eyebrow text-[#C9A96E] mb-4">Guest Wishes</p>
+            <p className="text-eyebrow text-[#5C202C] mb-4">Guest Wishes</p>
             <h1 className="text-section-heading text-[#1E1E1E] mb-5">
               Words From The Heart
             </h1>

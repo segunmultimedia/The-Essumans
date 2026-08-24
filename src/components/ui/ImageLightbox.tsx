@@ -57,8 +57,8 @@ export default function ImageLightbox({
 
   const iconBtn = [
     "flex items-center justify-center w-11 h-11",
-    "text-white/60 hover:text-white transition-colors duration-200",
-    "focus-visible:outline-2 focus-visible:outline-[#C9A96E] focus-visible:outline-offset-2",
+    "text-white/60 hover:text-white hover:scale-110 transition-all duration-200",
+    "focus-visible:outline-2 focus-visible:outline-[#B89558] focus-visible:outline-offset-2",
   ].join(" ");
 
   return (

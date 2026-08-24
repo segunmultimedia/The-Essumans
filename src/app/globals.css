@@ -5,15 +5,15 @@
    ============================================================ */
 
 @theme inline {
-  --color-ivory:         #FAF8F5;
+  --color-ivory:         #FBF7F1;
   --color-charcoal:      #1E1E1E;
-  --color-champagne:     #C9A96E;
-  --color-champagne-lt:  #E8D5B0;
-  --color-stone:         #EDE7DC;
-  --color-warm-white:    #FFFEF9;
+  --color-champagne:     #B89558;
+  --color-champagne-lt:  #B89558;
+  --color-stone:         #FBF7F1;
+  --color-warm-white:    #FBF7F1;
   --color-muted:         #6B6560;
   --color-muted-lt:      #9A948F;
-  --color-border:        #DDD8D0;
+  --color-border:        #B89558;
 
   --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-sans:  var(--font-jost), "Jost", system-ui, sans-serif;
@@ -32,7 +32,7 @@ html {
 }
 
 body {
-  background-color: #FAF8F5;
+  background-color: #FBF7F1;
   color: #1E1E1E;
   font-family: var(--font-sans);
   font-weight: 300;
@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5, h6 {
    ============================================================ */
 
 :focus-visible {
-  outline: 2px solid #C9A96E;
+  outline: 2px solid #B89558;
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -177,8 +177,8 @@ h1, h2, h3, h4, h5, h6 {
    ============================================================ */
 
 ::selection {
-  background-color: #C9A96E;
-  color: #FAF8F5;
+  background-color: #5C202C;
+  color: #FBF7F1;
 }
 
 /* ============================================================
@@ -186,9 +186,9 @@ h1, h2, h3, h4, h5, h6 {
    ============================================================ */
 
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #FAF8F5; }
-::-webkit-scrollbar-thumb { background: #DDD8D0; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #C9A96E; }
+::-webkit-scrollbar-track { background: #FBF7F1; }
+::-webkit-scrollbar-thumb { background: #B89558; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #5C202C; }
 
 /* ============================================================
    Hero overlay
@@ -211,7 +211,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   width: 40px;
   height: 1px;
-  background-color: #C9A96E;
+  background-color: #B89558;
   flex-shrink: 0;
 }
 

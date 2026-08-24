@@ -35,7 +35,7 @@ export default function Memories({ memories }: MemoriesProps) {
     <section
       id="memories"
       aria-label="Memories with Kwabena"
-      className="w-full bg-[#FAF8F5] section-pad overflow-hidden"
+      className="w-full bg-[#FBF7F1] section-pad overflow-hidden"
     >
       <div className="container-e">
         {/* Two-column editorial layout on desktop */}
@@ -43,7 +43,7 @@ export default function Memories({ memories }: MemoriesProps) {
 
           {/* Left — heading block, sticky on desktop */}
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-eyebrow text-[#C9A96E] mb-5">People & Stories</p>
+            <p className="text-eyebrow text-[#5C202C] mb-5">People & Stories</p>
             <h2 className="text-section-heading text-[#1E1E1E] mb-5">
               Memories With Kwabena
             </h2>
@@ -61,15 +61,15 @@ export default function Memories({ memories }: MemoriesProps) {
                       key={i}
                       className={`transition-all duration-500 rounded-full ${
                         i === current
-                          ? "w-8 h-1.5 bg-[#C9A96E]"
-                          : "w-2 h-2 bg-[#DDD8D0]"
+                          ? "w-8 h-1.5 bg-[#5C202C]"
+                          : "w-2 h-2 bg-[#B89558]"
                       }`}
                     />
                   ))}
                 </div>
                 <a 
                   href="/memories" 
-                  className="w-max text-sm font-sans font-medium text-[#C9A96E] hover:text-[#B6965B] uppercase tracking-widest transition-colors underline-offset-4 hover:underline"
+                  className="w-max text-sm font-sans font-medium text-[#5C202C] hover:text-[#B6965B] uppercase tracking-widest transition-colors underline-offset-4 hover:underline"
                 >
                   View All Memories
                 </a>
@@ -99,7 +99,7 @@ export default function Memories({ memories }: MemoriesProps) {
                 </motion.div>
               </AnimatePresence>
             ) : (
-              <div className="h-full flex items-center justify-center min-h-[300px] border border-dashed border-[#DDD8D0] rounded-xl p-8">
+              <div className="h-full flex items-center justify-center min-h-[300px] border border-dashed border-[#B89558] rounded-xl p-8">
                 <p className="text-body text-[#6B6560] italic opacity-80 text-center">
                   Beautiful memories are being collected. They will appear here soon.
                 </p>

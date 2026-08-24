@@ -44,7 +44,7 @@ export default function MemoriesArchive({ initialMemories, totalMemories }: Memo
   return (
     <div className="w-full pb-20">
       {memories.length === 0 ? (
-        <div className="min-h-[40vh] flex items-center justify-center border border-dashed border-[#DDD8D0] rounded-xl p-8 mx-4 md:mx-auto max-w-4xl">
+        <div className="min-h-[40vh] flex items-center justify-center border border-dashed border-[#B89558] rounded-xl p-8 mx-4 md:mx-auto max-w-4xl">
           <p className="text-body text-[#6B6560] italic opacity-80 text-center">
             Beautiful memories will appear here soon.
           </p>
