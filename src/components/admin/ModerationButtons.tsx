@@ -6,16 +6,15 @@ interface ModerationButtonsProps {
   type: "Wish" | "Memory";
   id: string;
   status: string;
-  onApprove: (id: string) => Promise<void>;
-  onReject: (id: string) => Promise<void>;
-  onDelete: (id: string) => Promise<void>;
+  onRestore: (id: string) => Promise<void>;
+  onSoftDelete: (id: string) => Promise<void>;
+  onHardDelete: (id: string) => Promise<void>;
 }
 
-export function ModerationButtons({ type, id, status, onApprove, onReject, onDelete }: ModerationButtonsProps) {
+export function ModerationButtons({ type, id, status, onRestore, onSoftDelete, onHardDelete }: ModerationButtonsProps) {
   const [isPending, startTransition] = useTransition();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Close modal on Escape key press
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -28,15 +27,15 @@ export function ModerationButtons({ type, id, status, onApprove, onReject, onDel
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isModalOpen, isPending]);
 
-  const handleApprove = () => {
+  const handleRestore = () => {
     startTransition(async () => {
-      await onApprove(id);
+      await onRestore(id);
     });
   };
 
-  const handleReject = () => {
+  const handleSoftDelete = () => {
     startTransition(async () => {
-      await onReject(id);
+      await onSoftDelete(id);
     });
   };
 
@@ -45,41 +44,45 @@ export function ModerationButtons({ type, id, status, onApprove, onReject, onDel
     if (!isPending) setIsModalOpen(false);
   };
 
-  const handleConfirmDelete = () => {
+  const handleConfirmHardDelete = () => {
     startTransition(async () => {
-      await onDelete(id);
+      await onHardDelete(id);
       setIsModalOpen(false);
     });
   };
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-2 w-full sm:w-auto mt-4 sm:mt-0">
+      <div className="flex flex-wrap gap-2 w-full sm:w-auto mt-4 sm:mt-0 justify-end">
         {status !== "APPROVED" && (
           <button
-            onClick={handleApprove}
+            onClick={handleRestore}
             disabled={isPending}
-            className="h-11 sm:h-8 px-3 text-sm sm:text-xs font-medium text-white bg-green-600 rounded-md sm:rounded hover:bg-green-700 disabled:opacity-50 transition-colors col-span-1"
+            className="h-11 sm:h-8 px-3 text-sm sm:text-xs font-medium text-white bg-green-600 rounded-md sm:rounded hover:bg-green-700 disabled:opacity-50 transition-colors"
           >
-            Approve
+            {status === "PENDING" ? "Approve" : "Restore"}
           </button>
         )}
+        
         {status !== "REJECTED" && (
           <button
-            onClick={handleReject}
+            onClick={handleSoftDelete}
             disabled={isPending}
-            className="h-11 sm:h-8 px-3 text-sm sm:text-xs font-medium text-amber-700 bg-amber-100 rounded-md sm:rounded hover:bg-amber-200 disabled:opacity-50 transition-colors col-span-1"
+            className="h-11 sm:h-8 px-3 text-sm sm:text-xs font-medium text-amber-700 bg-amber-100 rounded-md sm:rounded hover:bg-amber-200 disabled:opacity-50 transition-colors"
           >
-            Reject
+            Delete
           </button>
         )}
-        <button
-          onClick={openDeleteModal}
-          disabled={isPending}
-          className="h-11 sm:h-8 px-3 text-sm sm:text-xs font-medium text-red-700 bg-red-100 rounded-md sm:rounded hover:bg-red-200 disabled:opacity-50 transition-colors col-span-2 sm:col-span-1"
-        >
-          Delete
-        </button>
+
+        {(status === "REJECTED" || status === "PENDING") && (
+          <button
+            onClick={openDeleteModal}
+            disabled={isPending}
+            className="h-11 sm:h-8 px-3 text-sm sm:text-xs font-medium text-red-700 bg-red-100 rounded-md sm:rounded hover:bg-red-200 disabled:opacity-50 transition-colors"
+          >
+            Delete Permanently
+          </button>
+        )}
       </div>
 
       {isModalOpen && (
@@ -112,7 +115,7 @@ export function ModerationButtons({ type, id, status, onApprove, onReject, onDel
                 Cancel
               </button>
               <button
-                onClick={handleConfirmDelete}
+                onClick={handleConfirmHardDelete}
                 disabled={isPending}
                 className="h-11 sm:h-10 px-4 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:opacity-50 transition-colors flex items-center justify-center order-1 sm:order-2"
               >

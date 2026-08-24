@@ -7,7 +7,7 @@ import { supabase } from "@/lib/supabase";
 
 // WISH ACTIONS
 
-export async function approveWish(id: string) {
+export async function restoreWish(id: string) {
   await requireAdmin();
   await prisma.wish.update({
     where: { id },
@@ -18,7 +18,7 @@ export async function approveWish(id: string) {
   revalidatePath("/");
 }
 
-export async function rejectWish(id: string) {
+export async function softDeleteWish(id: string) {
   await requireAdmin();
   await prisma.wish.update({
     where: { id },
@@ -29,7 +29,7 @@ export async function rejectWish(id: string) {
   revalidatePath("/");
 }
 
-export async function deleteWish(id: string) {
+export async function hardDeleteWish(id: string) {
   await requireAdmin();
   await prisma.wish.delete({
     where: { id },
@@ -42,7 +42,7 @@ export async function deleteWish(id: string) {
 
 // MEMORY ACTIONS
 
-export async function approveMemory(id: string) {
+export async function restoreMemory(id: string) {
   await requireAdmin();
   await prisma.memory.update({
     where: { id },
@@ -53,7 +53,7 @@ export async function approveMemory(id: string) {
   revalidatePath("/");
 }
 
-export async function rejectMemory(id: string) {
+export async function softDeleteMemory(id: string) {
   await requireAdmin();
   await prisma.memory.update({
     where: { id },
@@ -64,7 +64,7 @@ export async function rejectMemory(id: string) {
   revalidatePath("/");
 }
 
-export async function deleteMemory(id: string) {
+export async function hardDeleteMemory(id: string) {
   await requireAdmin();
   
   // Fetch memory first to see if it has a photo

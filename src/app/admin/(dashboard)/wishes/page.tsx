@@ -2,26 +2,30 @@ import { requireAdmin } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { ModerationButtons } from "@/components/admin/ModerationButtons";
-import { approveWish, rejectWish, deleteWish } from "@/app/actions/admin";
+import { restoreWish, softDeleteWish, hardDeleteWish } from "@/app/actions/admin";
 
 export default async function WishesManagementPage(props: { searchParams: Promise<{ status?: string }> }) {
   await requireAdmin();
   
   const searchParams = await props.searchParams;
-  const statusFilter = searchParams.status || "PENDING";
+  const statusFilter = searchParams.status || "APPROVED"; // Default to Published (APPROVED)
 
   const whereClause = statusFilter === "ALL" ? {} : { status: statusFilter as any };
   
-  const wishes = await prisma.wish.findMany({
-    where: whereClause,
-    orderBy: { createdAt: "desc" }
-  });
+  const [wishes, publishedCount, deletedCount, allCount] = await Promise.all([
+    prisma.wish.findMany({
+      where: whereClause,
+      orderBy: { createdAt: "desc" }
+    }),
+    prisma.wish.count({ where: { status: "APPROVED" } }),
+    prisma.wish.count({ where: { status: "REJECTED" } }),
+    prisma.wish.count(),
+  ]);
 
   const tabs = [
-    { label: "Pending", value: "PENDING" },
-    { label: "Approved", value: "APPROVED" },
-    { label: "Rejected", value: "REJECTED" },
-    { label: "All", value: "ALL" }
+    { label: `Published (${publishedCount})`, value: "APPROVED" },
+    { label: `Deleted (${deletedCount})`, value: "REJECTED" },
+    { label: `All (${allCount})`, value: "ALL" }
   ];
 
   return (
@@ -82,9 +86,9 @@ export default async function WishesManagementPage(props: { searchParams: Promis
                     type="Wish"
                     id={wish.id} 
                     status={wish.status}
-                    onApprove={approveWish}
-                    onReject={rejectWish}
-                    onDelete={deleteWish}
+                    onRestore={restoreWish}
+                    onSoftDelete={softDeleteWish}
+                    onHardDelete={hardDeleteWish}
                   />
                 </div>
               </li>

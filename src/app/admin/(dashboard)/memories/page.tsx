@@ -3,26 +3,30 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { ModerationButtons } from "@/components/admin/ModerationButtons";
 import { PreviewableImage } from "@/components/admin/PreviewableImage";
-import { approveMemory, rejectMemory, deleteMemory } from "@/app/actions/admin";
+import { restoreMemory, softDeleteMemory, hardDeleteMemory } from "@/app/actions/admin";
 
 export default async function MemoriesManagementPage(props: { searchParams: Promise<{ status?: string }> }) {
   await requireAdmin();
   
   const searchParams = await props.searchParams;
-  const statusFilter = searchParams.status || "PENDING";
+  const statusFilter = searchParams.status || "APPROVED"; // Default to Published (APPROVED)
 
   const whereClause = statusFilter === "ALL" ? {} : { status: statusFilter as any };
   
-  const memories = await prisma.memory.findMany({
-    where: whereClause,
-    orderBy: { createdAt: "desc" }
-  });
+  const [memories, publishedCount, deletedCount, allCount] = await Promise.all([
+    prisma.memory.findMany({
+      where: whereClause,
+      orderBy: { createdAt: "desc" }
+    }),
+    prisma.memory.count({ where: { status: "APPROVED" } }),
+    prisma.memory.count({ where: { status: "REJECTED" } }),
+    prisma.memory.count(),
+  ]);
 
   const tabs = [
-    { label: "Pending", value: "PENDING" },
-    { label: "Approved", value: "APPROVED" },
-    { label: "Rejected", value: "REJECTED" },
-    { label: "All", value: "ALL" }
+    { label: `Published (${publishedCount})`, value: "APPROVED" },
+    { label: `Deleted (${deletedCount})`, value: "REJECTED" },
+    { label: `All (${allCount})`, value: "ALL" }
   ];
 
   return (
@@ -97,9 +101,9 @@ export default async function MemoriesManagementPage(props: { searchParams: Prom
                     type="Memory"
                     id={memory.id} 
                     status={memory.status}
-                    onApprove={approveMemory}
-                    onReject={rejectMemory}
-                    onDelete={deleteMemory}
+                    onRestore={restoreMemory}
+                    onSoftDelete={softDeleteMemory}
+                    onHardDelete={hardDeleteMemory}
                   />
                 </div>
               </li>

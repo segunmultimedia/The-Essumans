@@ -41,7 +41,8 @@ export async function submitWish(formData: FormData) {
         name,
         message,
         relationship: relationship || null,
-        status: "PENDING", // Always PENDING for new submissions
+        status: "APPROVED", // Auto-publish
+        approvedAt: new Date(),
       },
     });
 

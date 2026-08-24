@@ -89,7 +89,8 @@ export async function submitMemory(formData: FormData) {
         memory,
         photoUrl,
         relationship: relationship || null,
-        status: "PENDING", // Always PENDING for new submissions
+        status: "APPROVED", // Auto-publish
+        approvedAt: new Date(),
       },
     });
 
