@@ -84,7 +84,7 @@ export const storyMilestones = [
 ];
 
 // [REPLACE] — Gallery photographs
-export type GalleryCategory = "All" | "Couple" | "Engagement" | "Wedding" | "Family & Friends" | "Reception";
+export type GalleryCategory = "All" | "Couple" | "Engagement" | "Wedding" | "Friends & Family" | "Reception";
 
 export interface GalleryImage {
   id:       string;
@@ -96,7 +96,7 @@ export interface GalleryImage {
 }
 
 export const galleryCategories: GalleryCategory[] = [
-  "All", "Couple", "Engagement", "Wedding", "Family & Friends", "Reception",
+  "All", "Couple", "Engagement", "Wedding", "Friends & Family", "Reception",
 ];
 
 // [REPLACE] — All 12 images are distinct, no repeats
@@ -106,13 +106,18 @@ export const galleryImages: GalleryImage[] = [
   { id: "g3",  src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80&auto=format&fit=crop",  alt: "Ceremony vows",                             category: "Wedding",         width: 800, height: 1000 },
   { id: "g4",  src: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80&auto=format&fit=crop",  alt: "A romantic moment",                         category: "Engagement",      width: 800, height: 533  },
   { id: "g5",  src: "https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=800&q=80&auto=format&fit=crop",  alt: "Couple together outdoors",                  category: "Couple",          width: 800, height: 600  },
-  { id: "g6",  src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80&auto=format&fit=crop",  alt: "Family and friends gathering",              category: "Family & Friends", width: 800, height: 533 },
   { id: "g7",  src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80&auto=format&fit=crop",  alt: "Wedding portrait",                          category: "Couple",          width: 800, height: 1000 },
   { id: "g8",  src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80&auto=format&fit=crop",  alt: "Wedding celebration",                       category: "Reception",       width: 800, height: 533  },
   { id: "g9",  src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80&auto=format&fit=crop",  alt: "Wedding day portrait",                      category: "Wedding",         width: 800, height: 1067 },
   { id: "g10", src: "https://images.unsplash.com/photo-1472653431158-6364773b2a56?w=800&q=80&auto=format&fit=crop",  alt: "Reception table setting",                   category: "Reception",       width: 800, height: 600  },
   { id: "g11", src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80&auto=format&fit=crop",  alt: "Engagement session",                        category: "Engagement",      width: 800, height: 600  },
   { id: "g12", src: "https://images.unsplash.com/photo-1525518392674-39ba1fca2ec2?w=800&q=80&auto=format&fit=crop",  alt: "First dance at the reception",              category: "Reception",       width: 800, height: 533  },
+  { id: "f1",  src: "/gallery/f1.jpg", alt: "Friends and family celebrating", category: "Friends & Family", width: 853, height: 1280 },
+  { id: "f2",  src: "/gallery/f2.jpg", alt: "Friends and family celebration", category: "Friends & Family", width: 853, height: 1280 },
+  { id: "f3",  src: "/gallery/f3.jpg", alt: "Friends and family gathering",   category: "Friends & Family", width: 853, height: 1280 },
+  { id: "f4",  src: "/gallery/f4.jpg", alt: "Wedding guests smiling",         category: "Friends & Family", width: 853, height: 1280 },
+  { id: "f5",  src: "/gallery/f5.jpg", alt: "Joyous moments with family",     category: "Friends & Family", width: 853, height: 1280 },
+  { id: "f6",  src: "/gallery/f6.jpg", alt: "Guests having a wonderful time", category: "Friends & Family", width: 853, height: 1280 },
 ];
 
 // [REPLACE] — Sample wishes from guests
