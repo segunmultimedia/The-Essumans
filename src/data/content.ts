@@ -46,7 +46,7 @@ export const storyMilestones = [
     heading:     "How We Met",
     year:        "",           // [REPLACE]
     description: "Every great love story begins with a moment — a conversation, a glance, a shared laugh that stays with you longer than expected. This was theirs.",
-    image:       "https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=900&q=80&auto=format&fit=crop",
+    image:       "/gallery/c1.jpg",
     imageAlt:    "The beginning of their story",
   },
   {
@@ -70,7 +70,7 @@ export const storyMilestones = [
     heading:     "The Wedding",
     year:        "22 August 2026",
     description: "Surrounded by the people who love them most, Kwabena and Kristine made their promises not just to each other but to a lifetime of shared moments, laughter, and love.",
-    image:       "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=900&q=80&auto=format&fit=crop",
+    image:       "/gallery/c4.jpg",
     imageAlt:    "Their wedding ceremony",
   },
   {
@@ -101,23 +101,30 @@ export const galleryCategories: GalleryCategory[] = [
 
 // [REPLACE] — All 12 images are distinct, no repeats
 export const galleryImages: GalleryImage[] = [
-  { id: "g1",  src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&auto=format&fit=crop",  alt: "Kwabena and Kristine — couple portrait",    category: "Couple",          width: 800, height: 1067 },
-  { id: "g2",  src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&q=80&auto=format&fit=crop",  alt: "Wedding ceremony",                          category: "Wedding",         width: 800, height: 600  },
-  { id: "g3",  src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80&auto=format&fit=crop",  alt: "Ceremony vows",                             category: "Wedding",         width: 800, height: 1000 },
-  { id: "g4",  src: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80&auto=format&fit=crop",  alt: "A romantic moment",                         category: "Engagement",      width: 800, height: 533  },
-  { id: "g5",  src: "https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=800&q=80&auto=format&fit=crop",  alt: "Couple together outdoors",                  category: "Couple",          width: 800, height: 600  },
-  { id: "g7",  src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80&auto=format&fit=crop",  alt: "Wedding portrait",                          category: "Couple",          width: 800, height: 1000 },
-  { id: "g8",  src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80&auto=format&fit=crop",  alt: "Wedding celebration",                       category: "Reception",       width: 800, height: 533  },
-  { id: "g9",  src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80&auto=format&fit=crop",  alt: "Wedding day portrait",                      category: "Wedding",         width: 800, height: 1067 },
-  { id: "g10", src: "https://images.unsplash.com/photo-1472653431158-6364773b2a56?w=800&q=80&auto=format&fit=crop",  alt: "Reception table setting",                   category: "Reception",       width: 800, height: 600  },
-  { id: "g11", src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80&auto=format&fit=crop",  alt: "Engagement session",                        category: "Engagement",      width: 800, height: 600  },
-  { id: "g12", src: "https://images.unsplash.com/photo-1525518392674-39ba1fca2ec2?w=800&q=80&auto=format&fit=crop",  alt: "First dance at the reception",              category: "Reception",       width: 800, height: 533  },
+  // Real Couple Images
+  { id: "c1",  src: "/gallery/c1.jpg", alt: "Kwabena and Kristine", category: "Couple", width: 1170, height: 754 },
+  { id: "c2",  src: "/gallery/c2.jpg", alt: "Kwabena and Kristine together", category: "Couple", width: 752, height: 1280 },
+  { id: "c3",  src: "/gallery/c3.jpg", alt: "Wedding portrait of Kwabena and Kristine", category: "Couple", width: 938, height: 1280 },
+  { id: "c4",  src: "/gallery/c4.jpg", alt: "Kwabena and Kristine celebration", category: "Couple", width: 942, height: 1280 },
+  // Real Friends & Family Images
   { id: "f1",  src: "/gallery/f1.jpg", alt: "Friends and family celebrating", category: "Friends & Family", width: 853, height: 1280 },
   { id: "f2",  src: "/gallery/f2.jpg", alt: "Friends and family celebration", category: "Friends & Family", width: 853, height: 1280 },
   { id: "f3",  src: "/gallery/f3.jpg", alt: "Friends and family gathering",   category: "Friends & Family", width: 853, height: 1280 },
   { id: "f4",  src: "/gallery/f4.jpg", alt: "Wedding guests smiling",         category: "Friends & Family", width: 853, height: 1280 },
   { id: "f5",  src: "/gallery/f5.jpg", alt: "Joyous moments with family",     category: "Friends & Family", width: 853, height: 1280 },
   { id: "f6",  src: "/gallery/f6.jpg", alt: "Guests having a wonderful time", category: "Friends & Family", width: 853, height: 1280 },
+  { id: "fam1", src: "/gallery/fam1.jpg", alt: "Family members", category: "Friends & Family", width: 540, height: 449 },
+  { id: "fam2", src: "/gallery/fam2.jpg", alt: "Family portrait", category: "Friends & Family", width: 540, height: 652 },
+  
+  // AI Placeholders (Moved to the end so they do not show up on the 12-image homepage gallery preview)
+  { id: "g2",  src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&q=80&auto=format&fit=crop",  alt: "Wedding ceremony",                          category: "Wedding",         width: 800, height: 600  },
+  { id: "g3",  src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80&auto=format&fit=crop",  alt: "Ceremony vows",                             category: "Wedding",         width: 800, height: 1000 },
+  { id: "g4",  src: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80&auto=format&fit=crop",  alt: "A romantic moment",                         category: "Engagement",      width: 800, height: 533  },
+  { id: "g8",  src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80&auto=format&fit=crop",  alt: "Wedding celebration",                       category: "Reception",       width: 800, height: 533  },
+  { id: "g9",  src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80&auto=format&fit=crop",  alt: "Wedding day portrait",                      category: "Wedding",         width: 800, height: 1067 },
+  { id: "g10", src: "https://images.unsplash.com/photo-1472653431158-6364773b2a56?w=800&q=80&auto=format&fit=crop",  alt: "Reception table setting",                   category: "Reception",       width: 800, height: 600  },
+  { id: "g11", src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80&auto=format&fit=crop",  alt: "Engagement session",                        category: "Engagement",      width: 800, height: 600  },
+  { id: "g12", src: "https://images.unsplash.com/photo-1525518392674-39ba1fca2ec2?w=800&q=80&auto=format&fit=crop",  alt: "First dance at the reception",              category: "Reception",       width: 800, height: 533  },
 ];
 
 // [REPLACE] — Sample wishes from guests
