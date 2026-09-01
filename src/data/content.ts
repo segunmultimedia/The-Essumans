@@ -70,7 +70,7 @@ export const storyMilestones = [
     heading:     "The Wedding",
     year:        "22 August 2026",
     description: "Surrounded by the people who love them most, Kwabena and Kristine made their promises not just to each other but to a lifetime of shared moments, laughter, and love.",
-    image:       "/gallery/c4.jpg",
+    image:       "/w2.jpg",
     imageAlt:    "Their wedding ceremony",
   },
   {
@@ -102,29 +102,41 @@ export const galleryCategories: GalleryCategory[] = [
 // [REPLACE] — All 12 images are distinct, no repeats
 export const galleryImages: GalleryImage[] = [
   // Real Couple Images
-  { id: "c1",  src: "/gallery/c1.jpg", alt: "Kwabena and Kristine", category: "Couple", width: 1170, height: 754 },
-  { id: "c2",  src: "/gallery/c2.jpg", alt: "Kwabena and Kristine together", category: "Couple", width: 752, height: 1280 },
-  { id: "c3",  src: "/gallery/c3.jpg", alt: "Wedding portrait of Kwabena and Kristine", category: "Couple", width: 938, height: 1280 },
-  { id: "c4",  src: "/gallery/c4.jpg", alt: "Kwabena and Kristine celebration", category: "Couple", width: 942, height: 1280 },
+  { id: "ex",   src: "/gallery/ex.jpg",  alt: "Kwabena and Kristine",                       category: "Couple", width: 800,  height: 1200 },
+  { id: "c2",   src: "/gallery/c2.jpg",  alt: "Kwabena and Kristine together",               category: "Couple", width: 752,  height: 1280 },
+  { id: "c3",   src: "/gallery/c3.jpg",  alt: "Wedding portrait of Kwabena and Kristine",   category: "Couple", width: 938,  height: 1280 },
+  { id: "c4",   src: "/gallery/c4.jpg",  alt: "Kwabena and Kristine celebration",            category: "Couple", width: 942,  height: 1280 },
+  { id: "c_eg3", src: "/gallery/eg3.jpg", alt: "Kwabena and Kristine engagement",            category: "Couple", width: 800,  height: 1200 },
   // Real Friends & Family Images
+  { id: "ff1", src: "/gallery/ff1.jpg", alt: "Friends and family moment 1", category: "Friends & Family", width: 1200, height: 800 },
+  { id: "ff2", src: "/gallery/ff2.jpg", alt: "Friends and family moment 2", category: "Friends & Family", width: 1200, height: 800 },
+  { id: "ff3", src: "/gallery/ff3.jpg", alt: "Friends and family moment 3", category: "Friends & Family", width: 1200, height: 800 },
   { id: "f1",  src: "/gallery/f1.jpg", alt: "Friends and family celebrating", category: "Friends & Family", width: 853, height: 1280 },
   { id: "f2",  src: "/gallery/f2.jpg", alt: "Friends and family celebration", category: "Friends & Family", width: 853, height: 1280 },
   { id: "f3",  src: "/gallery/f3.jpg", alt: "Friends and family gathering",   category: "Friends & Family", width: 853, height: 1280 },
   { id: "f4",  src: "/gallery/f4.jpg", alt: "Wedding guests smiling",         category: "Friends & Family", width: 853, height: 1280 },
   { id: "f5",  src: "/gallery/f5.jpg", alt: "Joyous moments with family",     category: "Friends & Family", width: 853, height: 1280 },
   { id: "f6",  src: "/gallery/f6.jpg", alt: "Guests having a wonderful time", category: "Friends & Family", width: 853, height: 1280 },
-  { id: "fam1", src: "/gallery/fam1.jpg", alt: "Family members", category: "Friends & Family", width: 540, height: 449 },
-  { id: "fam2", src: "/gallery/fam2.jpg", alt: "Family portrait", category: "Friends & Family", width: 540, height: 652 },
   
-  // AI Placeholders (Moved to the end so they do not show up on the 12-image homepage gallery preview)
-  { id: "g2",  src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&q=80&auto=format&fit=crop",  alt: "Wedding ceremony",                          category: "Wedding",         width: 800, height: 600  },
-  { id: "g3",  src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80&auto=format&fit=crop",  alt: "Ceremony vows",                             category: "Wedding",         width: 800, height: 1000 },
-  { id: "g4",  src: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80&auto=format&fit=crop",  alt: "A romantic moment",                         category: "Engagement",      width: 800, height: 533  },
-  { id: "g8",  src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80&auto=format&fit=crop",  alt: "Wedding celebration",                       category: "Reception",       width: 800, height: 533  },
-  { id: "g9",  src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80&auto=format&fit=crop",  alt: "Wedding day portrait",                      category: "Wedding",         width: 800, height: 1067 },
-  { id: "g10", src: "https://images.unsplash.com/photo-1472653431158-6364773b2a56?w=800&q=80&auto=format&fit=crop",  alt: "Reception table setting",                   category: "Reception",       width: 800, height: 600  },
-  { id: "g11", src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80&auto=format&fit=crop",  alt: "Engagement session",                        category: "Engagement",      width: 800, height: 600  },
-  { id: "g12", src: "https://images.unsplash.com/photo-1525518392674-39ba1fca2ec2?w=800&q=80&auto=format&fit=crop",  alt: "First dance at the reception",              category: "Reception",       width: 800, height: 533  },
+  // Real Engagement Images
+  { id: "eg1", src: "/gallery/eg1.jpg", alt: "Engagement photo 1", category: "Engagement", width: 800, height: 1200 },
+  { id: "eg2", src: "/gallery/eg2.jpg", alt: "Engagement photo 2", category: "Engagement", width: 800, height: 1200 },
+  { id: "eg3", src: "/gallery/eg3.jpg", alt: "Engagement photo 3", category: "Engagement", width: 800, height: 1200 },
+  { id: "eg4", src: "/gallery/eg4.jpg", alt: "Engagement photo 4", category: "Engagement", width: 1200, height: 800 },
+  { id: "eg5", src: "/gallery/eg5.jpg", alt: "Engagement photo 5", category: "Engagement", width: 800, height: 1200 },
+  { id: "eg6", src: "/gallery/eg6.jpg", alt: "Engagement photo 6", category: "Engagement", width: 800, height: 1200 },
+  
+  // Real Wedding Images
+  { id: "w1", src: "/gallery/w1.jpg", alt: "Wedding photo 1", category: "Wedding", width: 800, height: 1200 },
+  { id: "w2", src: "/gallery/w2.jpg", alt: "Wedding photo 2", category: "Wedding", width: 1200, height: 800 },
+  { id: "w3", src: "/gallery/w3.jpg", alt: "Wedding photo 3", category: "Wedding", width: 1200, height: 800 },
+
+  // Real Reception Images
+  { id: "r1", src: "/gallery/r1.jpg", alt: "Reception photo 1", category: "Reception", width: 800, height: 1200 },
+  { id: "r2", src: "/gallery/r2.jpg", alt: "Reception photo 2", category: "Reception", width: 1200, height: 800 },
+  { id: "r3", src: "/gallery/r3.jpg", alt: "Reception photo 3", category: "Reception", width: 800, height: 1200 },
+  { id: "r4", src: "/gallery/r4.jpg", alt: "Reception photo 4", category: "Reception", width: 1200, height: 800 },
+  { id: "r5", src: "/gallery/r5.jpg", alt: "Reception photo 5", category: "Reception", width: 1200, height: 800 },
 ];
 
 // [REPLACE] — Sample wishes from guests
