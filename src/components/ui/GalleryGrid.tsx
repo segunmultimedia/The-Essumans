@@ -72,6 +72,7 @@ export default function GalleryGrid({ images, onImageClick }: GalleryGridProps) 
           else if (img.id === "r1") objectPosition = "object-[center_20%]";
           else if (img.id === "r3") objectPosition = "object-[center_20%]";
           else if (img.id === "r4") objectPosition = "object-[center_30%]";
+          else if (img.id === "f2") objectPosition = "object-center";
           else if (img.id.startsWith("f") && isPortrait) objectPosition = "object-[center_15%]"; // protects f1-f6 in mixed layouts
           else if (isPortrait && isLandscapeSlot) {
             objectPosition = "object-[center_20%]";
