@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 interface NavLink { label: string; href: string; }
 
@@ -94,14 +95,14 @@ export default function MobileNavigation({
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.04 * i, duration: 0.28, ease: "easeOut" }}
                   >
-                    <a
-                      ref={i === 0 ? firstLinkRef : undefined}
+                    <Link
+                      ref={i === 0 ? (firstLinkRef as any) : undefined}
                       href={link.href}
                       onClick={onClose}
                       className="block py-4 border-b border-[#B89558]/20 text-nav text-[#1E1E1E] hover:text-[#5C202C] hover:pl-2 transition-all duration-300 focus-visible:outline-none focus-visible:text-[#5C202C]"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </motion.li>
                 ))}
               </ul>

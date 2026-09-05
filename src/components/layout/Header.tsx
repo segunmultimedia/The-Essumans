@@ -2,15 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
+import Link from "next/link";
 import MobileNavigation from "./MobileNavigation";
 
 const navLinks = [
-  { label: "Home",           href: "#home" },
-  { label: "Our Story",      href: "#our-story" },
-  { label: "Gallery",        href: "#gallery" },
-  { label: "Wishes",         href: "#wishes" },
-  { label: "Kobby Said",     href: "#kobby-once-said" },
-  { label: "Memories",       href: "#memories" },
+  { label: "Home",           href: "/#home" },
+  { label: "Our Story",      href: "/#our-story" },
+  { label: "Gallery",        href: "/#gallery" },
+  { label: "Wishes",         href: "/#wishes" },
+  { label: "Kobby Said",     href: "/#kobby-once-said" },
+  { label: "Memories",       href: "/#memories" },
 ];
 
 export default function Header() {
@@ -31,24 +32,24 @@ export default function Header() {
       >
         <div className="container-e h-[68px] md:h-[76px] flex items-center justify-between">
           {/* Wordmark */}
-          <a
-            href="#home"
+          <Link
+            href="/#home"
             aria-label="THE ESSUMAN'S — return to top"
             className="font-serif tracking-[0.22em] text-[15px] md:text-[17px] text-[#1E1E1E] transition-colors duration-400"
           >
-            THE ESSUMAN&apos;S
-          </a>
+            THE ESSUMANS
+          </Link>
 
           {/* Desktop navigation */}
           <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-nav relative py-1 text-[#6B6560] hover:text-[#5C202C] transition-colors duration-250 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[#5C202C] after:transition-[width] after:duration-300 hover:after:w-full focus-visible:after:w-full focus-visible:outline-none"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 

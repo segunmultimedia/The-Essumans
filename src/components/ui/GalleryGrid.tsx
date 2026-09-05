@@ -62,7 +62,7 @@ export default function GalleryGrid({ images, onImageClick }: GalleryGridProps) 
           const isLandscapeSlot = !isFriendsAndFamily && !isCouple && (i % 6 === 3);
           let objectPosition = "object-center";
           
-          if (img.id === "ex") objectPosition = "object-top";
+          if (img.id === "ex") objectPosition = "object-[center_20%]";
           else if (img.id === "c2") objectPosition = "object-[center_15%]";
           else if (img.id === "c3") objectPosition = "object-[center_15%]";
           else if (img.id === "c4") objectPosition = "object-[center_15%]";

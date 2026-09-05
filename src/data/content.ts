@@ -45,7 +45,7 @@ export const storyMilestones = [
     id:          "how-we-met",
     heading:     "How We Met",
     year:        "",           // [REPLACE]
-    description: "Every great love story begins with a moment — a conversation, a glance, a shared laugh that stays with you longer than expected. This was theirs.",
+    description: "Every great love story begins with a moment, a conversation, a glance, a shared laugh that stays with you longer than expected. This was theirs.",
     image:       "/gallery/c1.jpg",
     imageAlt:    "The beginning of their story",
   },
@@ -53,7 +53,7 @@ export const storyMilestones = [
     id:          "the-journey",
     heading:     "The Journey",
     year:        "",    // [REPLACE]
-    description: "Through seasons of growth and change, their bond deepened. They built something worth holding on to — not just love, but understanding, trust, and a future worth believing in.",
+    description: "Through seasons of growth and change, their bond deepened. They built something worth holding on to, not just love, but understanding, trust, and a future worth believing in.",
     image:       "/the-two.jpg",
     imageAlt:    "Their journey together",
   },

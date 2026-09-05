@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { storyMilestones } from "@/data/content";
+import ZoomableImage from "./ZoomableImage";
 
 export default function StoryTimeline() {
   const reduce = useReducedMotion();
@@ -73,14 +74,12 @@ export default function StoryTimeline() {
             >
               {milestone.image ? (
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  <Image
+                  <ZoomableImage
                     src={milestone.image}
                     alt={milestone.imageAlt}
-                    fill
-                    sizes="(max-width: 768px) 90vw, 45vw"
-                    className={`object-cover ${milestone.id === 'the-journey' ? 'object-[center_25%]' : milestone.id === 'the-wedding' ? 'object-[center_15%] animate-slow-zoom' : 'object-center'} ${milestone.id !== 'the-wedding' ? 'transition-transform duration-[1.5s] hover:scale-[1.03]' : ''}`}
-                    quality={80}
-                    loading={i < 2 ? "eager" : "lazy"}
+                    wrapperClassName="absolute inset-0 w-full h-full"
+                    imageClassName={`object-cover ${milestone.id === 'the-journey' ? 'object-[center_20%]' : milestone.id === 'the-wedding' ? 'object-[center_15%]' : 'object-center'} animate-slow-zoom`}
+                    priority={i < 2}
                   />
                 </div>
               ) : null}

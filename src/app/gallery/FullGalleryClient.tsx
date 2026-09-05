@@ -45,6 +45,12 @@ export default function FullGalleryClient() {
         <div className="container-e">
           {/* Heading */}
           <div className="text-center max-w-[560px] mx-auto mb-10 md:mb-14">
+            <a 
+              href="/" 
+              className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-[#9A948F] hover:text-[#5C202C] transition-colors mb-8"
+            >
+              <span>←</span> Back to Home
+            </a>
             <p className="text-eyebrow text-[#6F2735] mb-5">THE ESSUMANS</p>
             <h1 className="text-section-heading text-[#1E1E1E] mb-5">
               Our Moments

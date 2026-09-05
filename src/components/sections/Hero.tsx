@@ -49,7 +49,7 @@ export default function Hero() {
           {...fade(0.25)}
           className="text-hero !text-white mb-6"
         >
-          THE ESSUMAN&apos;S
+          THE ESSUMANS
         </motion.h1>
 
         {/* Accent rule */}
