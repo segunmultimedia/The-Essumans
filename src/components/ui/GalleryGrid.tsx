@@ -59,10 +59,16 @@ export default function GalleryGrid({ images, onImageClick }: GalleryGridProps) 
           // If a portrait image is forced into a landscape slot in the mixed grid, 
           // protect the faces by centering near the top. F1-F6 are all portrait.
           const isPortrait = img.height > img.width;
-          const isLandscapeSlot = !isFriendsAndFamily && !isCouple && (i % 6 === 3);
+          const isMixedLayout = !isFriendsAndFamily && !isCouple;
+          const isLandscapeSlot = isMixedLayout && (i % 6 === 3);
           let objectPosition = "object-center";
           
-          if (img.id === "ex") objectPosition = "object-[center_20%]";
+          if (img.id === "ex") {
+            objectPosition = isMixedLayout ? "object-[center_10%]" : "object-[center_20%]";
+          }
+          else if (img.id === "f2") {
+            objectPosition = isMixedLayout ? "object-[center_10%]" : "object-center";
+          }
           else if (img.id === "c2") objectPosition = "object-[center_15%]";
           else if (img.id === "c3") objectPosition = "object-[center_15%]";
           else if (img.id === "c4") objectPosition = "object-[center_15%]";
@@ -72,7 +78,6 @@ export default function GalleryGrid({ images, onImageClick }: GalleryGridProps) 
           else if (img.id === "r1") objectPosition = "object-[center_20%]";
           else if (img.id === "r3") objectPosition = "object-[center_20%]";
           else if (img.id === "r4") objectPosition = "object-[center_30%]";
-          else if (img.id === "f2") objectPosition = "object-center";
           else if (img.id.startsWith("f") && isPortrait) objectPosition = "object-[center_15%]"; // protects f1-f6 in mixed layouts
           else if (isPortrait && isLandscapeSlot) {
             objectPosition = "object-[center_20%]";
