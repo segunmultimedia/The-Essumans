@@ -63,7 +63,7 @@ export default function GalleryGrid({ images, onImageClick }: GalleryGridProps) 
           const isLandscapeSlot = isMixedLayout && (i % 6 === 3);
           let objectPosition = "object-center";
           if (img.id === "ex") {
-            objectPosition = isMixedLayout ? "object-top" : "object-[center_20%]";
+            objectPosition = isMixedLayout ? "object-[center_30%]" : "object-[center_20%]";
           }
           else if (img.id === "f2") {
             objectPosition = isMixedLayout ? "object-[center_25%]" : "object-center";
