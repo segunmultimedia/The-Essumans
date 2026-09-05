@@ -62,12 +62,11 @@ export default function GalleryGrid({ images, onImageClick }: GalleryGridProps) 
           const isMixedLayout = !isFriendsAndFamily && !isCouple;
           const isLandscapeSlot = isMixedLayout && (i % 6 === 3);
           let objectPosition = "object-center";
-          
           if (img.id === "ex") {
-            objectPosition = isMixedLayout ? "object-[center_10%]" : "object-[center_20%]";
+            objectPosition = isMixedLayout ? "object-top" : "object-[center_20%]";
           }
           else if (img.id === "f2") {
-            objectPosition = isMixedLayout ? "object-[center_10%]" : "object-center";
+            objectPosition = isMixedLayout ? "object-[center_25%]" : "object-center";
           }
           else if (img.id === "c2") objectPosition = "object-[center_15%]";
           else if (img.id === "c3") objectPosition = "object-[center_15%]";
